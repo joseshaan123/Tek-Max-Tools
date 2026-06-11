@@ -24,6 +24,55 @@
       min-height: 100vh;
       overflow-x: hidden;
     }
+    /* ==========================================================================
+   HERO CONTAINER CONFIGURATION & EMBEDDED TOP RIGHT LOGO
+   ========================================================================== */
+.hero-section {
+  position: relative; /* CRITICAL: Acts as the anchor point for the absolute logo placement */
+  /* Keep your existing hero layout rules here (e.g., width, height, display) */
+}
+
+.section-embedded-header {
+  position: absolute;
+  top: 20px;        /* Distance from the very top of the hero section */
+  right: 40px;      /* Distance from the very right edge of the page window */
+  z-index: 100;     /* Keeps the logo safely layered above the sliding filmstrip images */
+}
+
+/* White background card wrapper for the brand identity */
+.header-logo-container {
+
+  width: 180px;
+  height: auto;
+
+ 
+ 
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.header-logo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Elegant micro-hover interactives */
+.header-logo-container:hover {
+  transform: translateY(-3px);
+ 
+}
+
+/* Responsive constraints for screens like phones or small viewports */
+@media (max-width: 600px) {
+  .section-embedded-header {
+    top: 20px;
+    right: 20px;
+  }
+  .header-logo-container {
+    width: 120px;
+    padding: 8px 10px;
+  }
+}
 
     /* Hero Section Frame */
     .hero-section {
@@ -827,8 +876,15 @@
   </style>
 </head>
 <body>
+<section id="hero-section" class="hero-section">
+    <header class="section-embedded-header">
+      <a href="/" class="header-logo-link" aria-label="Go to Homepage">
+        <div class="header-logo-container">
+          <img src="/images/tekmaxlogo-removebg-preview.png" alt="TEK MAX Tools Logo" class="header-logo-img">
+        </div>
+      </a>
+    </header>
 
-  <section id="hero-section" class="hero-section">
     <div class="slider-window">
       <div id="image-container" class="image-filmstrip">
         <div class="slide-img" style="background-image: url('/images/home\ sec1\ img1.jpg');"></div>
@@ -857,7 +913,6 @@
       </a>
     </div>
   </section>
-
   <section id="about-section" class="about-section">
     <div class="text-column">
       <h2 class="reveal-heading">Trusted Since 2012.</h2>
