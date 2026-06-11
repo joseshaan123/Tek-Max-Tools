@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        /* Hero Container Setup */
+/* --- COLOR PALETTE & VARIABLES --- */
+@font-face {
+    font-family: "Mont";
+    src: url("/fonts/Montserrat-VariableFont_wght.ttf");
+}
+:root {
+  --tekmax-blue: #236B8E; /* Your exact requested corporate blue */
+  --nav-bg: #ffffff;
+}
+body{
+    background-color: white;
+}
+
+/* --- HERO SECTION STYLING --- */
+.executive-hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  padding: 40px 20px 120px 20px; /* Extra bottom padding so text clears the floating navbar */
+  box-sizing: border-box;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 1;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(10, 15, 25, 0.9) 0%, rgba(20, 25, 35, 0.8) 100%);
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  color: #ffffff;
+  text-align: center;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.hero-subtitle {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--tekmax-blue); /* Accent applied to the subtitle context */
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin-bottom: 25px;
+  color: white;
+  font-family: "Mont";
+  /* Title assigned your specific blue color */
+  text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5); /* Soft back shadow to make it punch off dark video layers */
+}
+
+.hero-divider {
+  width: 80px;
+  height: 3px;
+  background-color: var(--tekmax-blue);
+  margin: 0 auto 35px auto;
+}
+
+.hero-description {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #e2e8f0;
+  font-weight: 400;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* --- EXACT PICTURE 2 FLOATING BOTTOM NAVBAR --- */
+
+
+/* Responsive Scaling Layouts */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 32px;
+  }
+  .hero-description {
+    font-size: 16px;
+  }
+  .nav-item {
+    font-size: 15px;
+    padding: 8px 16px;
+  }
+}
+/* Container Background Design */
+.divisions-section {
+  background-color: #f8fafc; 
+  color: #1a202c;
+  padding: 80px 20px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  overflow: hidden;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 40px auto;
+}
+
+/* GLOBAL FLOATING STICKY NAVIGATION BAR */
+   .pill-navbar {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FFFFFF;
+    border: 4px solid #236B8E;
+    padding: 4px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 9999;
+  }
+
+  .nav-link {
+    color: #236B8E;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .nav-link.active {
+    background-color: #236B8E;
+    color: #FFFFFF;
+    padding: 8px 24px;
+  }
+
+.main-section-title {
+  color: #236B8E;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.section-subtitle {
+  color: #4a5568;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.flowchart-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.flowchart-svg-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.base-line {
+  stroke: rgba(35, 107, 142, 0.15); 
+  stroke-width: 5px;
+}
+
+.progress-line {
+  stroke: #236B8E;
+  stroke-width: 6px;
+  stroke-dasharray: 2500;
+  stroke-dashoffset: 2500;
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+.divisions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.division-column {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+/* Perfect alignment dimensions to lock text inside the clear SVG empty gap zone */
+.division-main-node {
+  text-align: center;
+  height: 200px; /* Gives plenty of breathing room */
+  margin-top: 70px; /* Matches exactly where the top lines stop */
+  margin-bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.division-main-node h3 {
+  color: #000000 !important; 
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.division-main-node p {
+  color: #1a1a1a !important; 
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.scroll-fill-box {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 180px;
+  border: 1px solid rgba(35, 107, 142, 0.25);
+  transition: border-color 0.3s ease;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+}
+
+.fill-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #236B8E;
+  transform: translateY(-100%);
+  transition: transform 0.1s ease-out;
+  z-index: 1;
+}
+
+.box-inner-content {
+  position: relative;
+  z-index: 2;
+  padding: 30px;
+  text-align: center;
+}
+
+.box-inner-content h4 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  color: rgba(35, 107, 142, 0.45); 
+  transition: color 0.2s ease;
+}
+
+.box-inner-content p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(74, 85, 104, 0.5); 
+  transition: color 0.2s ease;
+}
+
+.scroll-fill-box.text-active h4,
+.scroll-fill-box.text-active p {
+  color: #ffffff !important; 
+}
+
+@media (max-width: 900px) {
+  .divisions-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .division-main-node {
+    height: auto;
+    margin-top: 0px;
+  }
+  .flowchart-svg-lines {
+    display: none; 
+  }
+}
+.section3 h2 {
+  text-align: center;
+  font-family: "Mont", sans-serif;
+  color: #236B8E;
+  font-size: 50px;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.sec3maindiv {
+  width: 100%;
+  display: flex;
+  align-items: stretch; /* Forces all cards to equal height automatically */
+  justify-content: center;
+  gap: 50px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Modifying your base div to hold both image and text content safely */
+.sec3maindiv > div {
+  width: 320px;
+  padding: 0; /* Clear padding here so the image fits perfectly flush to the edges */
+  font-family: "Mont", sans-serif;
+  background-color: #236B8E;
+  color: white;
+  border-radius: 8px; /* Optional clean corporate rounded layout */
+  overflow: hidden; /* CRITICAL: Prevents zooming images from escaping the card frame */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Padding container specifically for your descriptive text */
+.pillar-text-content {
+  padding: 25px 20px;
+ 
+}
+
+.sec3maindiv h3 {
+  margin-top: 0;
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.sec3maindiv p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* --- IMAGE SLOTS & HOVER ZOOM CONTROLS --- */
+.pillar-image-wrapper {
+  width: 100%;
+  height: 180px; /* Locked Landscape aspect ratio height boundary */
+  overflow: hidden; /* Clips expanding transformations securely */
+  position: relative;
+  background-color: #1c5470; /* Placeholder fallback tint */
+  margin-bottom: 12px;
+}
+
+.pillar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Crops photos cleanly to focus on the center without stretching */
+  object-position: center;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth acceleration */
+}
+
+/* Trigger zoom internally only when hovering anywhere over its specific card */
+.sec3maindiv > div:hover .pillar-img {
+  transform: scale(1.12); /* Zooms inside exactly in place without altering outer card height */
+}
+
+
+/* --- SCROLL REVEAL INITIAL ANIMATION STATES --- */
+.scroll-reveal-card {
+  opacity: 0;
+  transform: translateY(60px); /* Pre-loaded position sitting below */
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+/* Active animation paint triggered dynamically by JavaScript visibility */
+.scroll-reveal-card.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.connect-section {
+  background-color: #f8fafc; /* Clean background matching your Section 2 environment */
+  padding: 100px 20px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.connect-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr; /* Perfect executive side-by-side split */
+  gap: 80px;
+  align-items: center;
+}
+
+/* --- LEFT SIDE TEXT STYLING --- */
+.connect-section {
+  background-color: #f8fafc; 
+  padding: 100px 20px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  position: relative;
+}
+
+.connect-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; /* Splits content safely sideways */
+  gap: 60px;
+  align-items: center;
+}
+
+/* Left Content Areas */
+.connect-text-side { display: flex; flex-direction: column; }
+.connect-tagline { font-size: 13px; font-weight: 700; letter-spacing: 3px; color: #236B8E; margin-bottom: 15px; text-transform: uppercase; }
+.connect-main-title { font-size: 42px; font-weight: 700; color: #000000; line-height: 1.25; margin: 0 0 25px 0; }
+.connect-description { font-size: 16px; line-height: 1.7; color: #4a5568; margin: 0 0 40px 0; }
+.connect-trust-note { display: flex; align-items: flex-start; gap: 15px; background: rgba(35, 107, 142, 0.05); padding: 20px; border-left: 4px solid #236B8E; border-radius: 4px; }
+.connect-trust-note p { margin: 0; font-size: 14px; line-height: 1.5; color: #1a202c; font-style: italic; }
+.lock-icon { font-size: 18px; color: #236B8E; }
+
+/* Right Content: The Living Portal Element */
+.connect-portal-side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.portal-click-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Central Deep Blue Executive Sphere */
+.portal-core-button {
+  width: 100%;
+  height: 100%;
+  background-color: #236B8E;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(35, 107, 142, 0.4);
+  z-index: 5;
+  transition: background-color 0.3s;
+}
+
+.portal-core-button span {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+/* Hover Adjustments: Smooth Scaling Up */
+.portal-click-wrapper:hover {
+  transform: scale(1.15);
+}
+.portal-click-wrapper:hover .portal-core-button {
+  background-color: #1a516d;
+}
+
+/* Continuous Call-to-Action Vibration and Layered Shockwaves */
+.portal-wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid rgba(35, 107, 142, 0.4);
+  background-color: rgba(35, 107, 142, 0.05);
+  z-index: 1;
+  pointer-events: none;
+  transform: scale(1);
+}
+
+/* Continuous layered animation timelines */
+.wave-1 { animation: radiateWave 2.5s infinite linear; }
+.wave-2 { animation: radiateWave 2.5s infinite linear 0.8s; }
+.wave-3 { animation: radiateWave 2.5s infinite linear 1.6s; }
+
+@keyframes radiateWave {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    /* Subtle mechanical distortion/vibration midpoint */
+    border-color: rgba(35, 107, 142, 0.6);
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+/* --- THE WIPE EXPANSION OVERLAY MASK --- */
+.portal-transition-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background-color: #236B8E;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: 100000; /* Forces overlay cleanly on top of all components */
+  pointer-events: none;
+  transition: transform 0.75s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* Class active injector triggered via Javascript click action */
+.portal-transition-overlay.expanding {
+  transform: translate(-50%, -50%) scale(400); /* Scales up dynamically to swallow the screen width */
+}
+
+@media (max-width: 900px) {
+  .connect-container { grid-template-columns: 1fr; gap: 60px; text-align: center; }
+  .connect-trust-note { text-align: left; }
+}
+
+/* Container Background Design */
+    </style>
+   <!-- The Floating Bottom Navbar Container -->
+<nav class="pill-navbar">
+    <a id="nav-home" href="/index.html" class="nav-link ">Home</a>
+    <a id="nav-about" href="/pages/aboutus.html" class="nav-link">About Us</a>
+    <a id="nav-india" href="/pages/services.html" class="nav-link">Our Services</a>
+    <a id="nav-ireland" href="/pages/ireland.html" class="nav-link">Ireland</a>
+    <a id="nav-china" href="/pages/india.html" class="nav-link">India</a>
+    <a id="nav-contact" href="/pages/contactus.html" class="nav-link">Contact Us</a>
+  </nav>
+<!-- Executive Hero Section -->
+<section class="executive-hero">
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="/videos/aboutus vid.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  
+  <!-- Content overlay filter -->
+  <div class="hero-overlay"></div>
+
+  <!-- Central Text Content Container -->
+  <div class="hero-content">
+    <span class="hero-subtitle">ABOUT US: ENGINEERING WITHOUT COMPROMISE</span>
+    <!-- Headings now feature your specific corporate blue color -->
+    <h1 class="hero-title">Shaping the Future of Global Industry Since 2012</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-description">
+      At Tek Max Tools, we believe that the world’s most demanding industries shouldn't have to choose between flawless precision and global agility. Since our inception in 2012, we have operated as an elite engineering partner at the intersection of heavy industrial tooling and high-performance agricultural machinery.
+    </p>
+    <p class="hero-description">
+      We don't just manufacture products; we engineer operational certainty. Whether designing high-tolerance tooling that drives global automotive assembly lines or fabricating advanced machinery to optimize European agricultural yields, our marvelous work is defined by a single standard: absolute perfection.
+    </p>
+  </div>
+</section>
+<section class="divisions-section">
+  <div class="section-header">
+    <h2 class="main-section-title">Two Distinct Worlds. One High-Engineering Standard.</h2>
+    <p class="section-subtitle">To serve our global clientele with maximum efficiency, Tek Max Tools operates through two highly specialized industrial divisions:</p>
+  </div>
+
+  <div class="flowchart-container">
+    
+    <svg class="flowchart-svg-lines" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+      
+      <line x1="500" y1="0" x2="500" y2="40" class="base-line" />
+      <line x1="500" y1="0" x2="500" y2="40" class="progress-line" />
+      
+      <line x1="250" y1="40" x2="750" y2="40" class="base-line" />
+      <line x1="500" y1="40" x2="250" y2="40" class="progress-line" />
+      <line x1="500" y1="40" x2="750" y2="40" class="progress-line" />
+      
+      <line x1="250" y1="40" x2="250" y2="70" class="base-line" />
+      <line x1="250" y1="40" x2="250" y2="70" class="progress-line" />
+      
+      <line x1="750" y1="40" x2="750" y2="70" class="base-line" />
+      <line x1="750" y1="40" x2="750" y2="70" class="progress-line" />
+
+      
+      <line x1="250" y1="270" x2="250" y2="900" class="base-line" />
+      <line x1="250" y1="270" x2="250" y2="900" class="progress-line left-vertical" />
+      
+      <line x1="750" y1="270" x2="750" y2="900" class="base-line" />
+      <line x1="750" y1="270" x2="750" y2="900" class="progress-line right-vertical" />
+    </svg>
+
+    <div class="divisions-grid">
+      
+      <div class="division-column left-column">
+        <div class="division-main-node">
+          <h3>The Precision Tooling & Automotive OEM Division</h3>
+          <p>In the high-stakes world of automotive manufacturing, downtime is not an option. We are a trusted, audited, and primary Tier-1 vendor for global automotive giants, including Volkswagen, Skoda Motors, Force Motors, General Motors, and Apollo Tyres.</p>
+        </div>
+
+        <div class="scroll-fill-box">
+          <div class="fill-overlay"></div>
+          <div class="box-inner-content">
+            <h4>Mastering the Complex</h4>
+            <p>We design and manufacture exceptionally durable Plastic Injection, Rubber, Tyre, and Bladder Moulds built to withstand millions of continuous production cycles.</p>
+          </div>
+        </div>
+
+        <div class="scroll-fill-box">
+          <div class="fill-overlay"></div>
+          <div class="box-inner-content">
+            <h4>Seamless Project Transfers</h4>
+            <p>We possess proven, industry-leading expertise in managing the complex international transfer of massive new model development projects. We securely relocate, install, and calibrate heavy manufacturing and assembly equipment from foreign countries straight to your production floor.</p>
+          </div>
+        </div>
+
+        <div class="scroll-fill-box">
+          <div class="fill-overlay"></div>
+          <div class="box-inner-content">
+            <h4>Rapid Remediation</h4>
+            <p>Our elite technical teams interface directly with your engineers to perform one-to-one mould corrections and precision repairs, returning your assets to peak performance within strictly guaranteed timeframes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="division-column right-column">
+        <div class="division-main-node">
+          <h3>The Advanced Agricultural Machinery Division</h3>
+          <p>Food security and agricultural efficiency require robust innovation. Leveraging our profound mastery of high-grade tool steel, we design and build bespoke machinery and custom parts that empower modern farming operations across Europe.</p>
+        </div>
+
+        <div class="scroll-fill-box">
+          <div class="fill-overlay"></div>
+          <div class="box-inner-content">
+            <h4>The Irish Market Standard</h4>
+            <p>By deeply analyzing real-world field conditions and customer pain points, we developed our premier, high-performance Macerator technology, which is currently serving as a market leader across Ireland.</p>
+          </div>
+        </div>
+
+        <div class="scroll-fill-box">
+          <div class="fill-overlay"></div>
+          <div class="box-inner-content">
+            <h4>Bespoke Field Solutions</h4>
+            <p>We engineer advanced agricultural implements—including specialized dribble bars, trailing shoes, and slurry distribution components—engineered to deliver precise nutrient placement, improve silage quality, and maximize field efficiency.</p>
+          </div>
+        </div>
+
+        <div class="scroll-fill-box">
+          <div class="fill-overlay"></div>
+          <div class="box-inner-content">
+            <h4>Blueprint Sourcing</h4>
+            <p>We fabricate and supply highly specialized spare parts built strictly to your technical blueprints, ensuring perfect compatibility and extended operational lifespans.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="section3">
+  <h2>The Pillars Of Our Massive Work</h2>
+  <div class="sec3maindiv">
+    
+    <div class="sec3subdiv1 scroll-reveal-card">
+        <div class="pillar-text-content">
+            <h3>Visionary In-House Design</h3>
+      <div class="pillar-image-wrapper">
+        <img src="/images/sec3div1img.jpg" alt="Visionary In-House Design" class="pillar-img">
+      </div>
+      
+        
+        <p>Every project begins with our experienced design team. We don't just look at blueprints; we study the exact real-world application, stress factors, and operational environment of your tool or machine. This ensures that our engineering solves your long-term structural challenges before fabrication even begins.</p>
+      </div>
+    </div>
+
+    <div class="sec3subdiv2 scroll-reveal-card">
+         <div class="pillar-text-content">
+            <h3>Strategic Global Sourcing</h3>
+      <div class="pillar-image-wrapper">
+        <img src="/images/sec3divimg2.jpg" alt="Strategic Global Sourcing" class="pillar-img">
+      </div>
+      
+        <p>By blending premium engineering with an elite international sourcing network spanning major industrial hubs like China and India, we achieve the perfect equilibrium. We deliver world-class, premium-grade materials and tooling at highly competitive global price points.</p>
+      </div>
+    </div>
+
+    <div class="sec3subdiv3 scroll-reveal-card">
+     <div class="pillar-text-content">
+        <h3>Absolute Time & Quality Guarantees</h3>
+      <div class="pillar-image-wrapper">
+        <img src="/images/sec3div3img.jpg" alt="Absolute Time & Quality Guarantees" class="pillar-img">
+      </div>
+     
+        
+        <p>We treat your timelines as binding legal covenants. Every custom machine, industrial mould, or precision component we deliver is backed by an ironclad guarantee on quality and timeframes, cross-coordinated across the globe.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="connect-section">
+  <div class="connect-container">
+    
+    <div class="connect-text-side">
+      <span class="connect-tagline">TAKE THE NEXT STEP</span>
+      <h2 class="connect-main-title">Let’s Transform Your Blueprints Into Operational Certainty.</h2>
+      <p class="connect-description">
+        Whether you are looking to secure an audited, Tier-1 industrial tool manufacturer or scale your European agricultural fleet with market-leading macerator technology—your deadlines are our absolute legal covenants. 
+      </p>
+      <div class="connect-trust-note">
+      
+        <p>From our design floors in India to our frontline service hubs in Ireland, your operational continuity is our absolute priority.</p>
+      </div>
+    </div>
+
+    <div class="connect-portal-side">
+      <div class="portal-click-wrapper" id="portal-trigger">
+        <div class="portal-wave wave-1"></div>
+        <div class="portal-wave wave-2"></div>
+        <div class="portal-wave wave-3"></div>
+        <div class="portal-core-button">
+          <span>Contact Us</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="portal-transition-overlay" id="global-wipe-overlay"></div>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const boxes = document.querySelectorAll(".scroll-fill-box");
+  const progressLines = document.querySelectorAll(".progress-line");
+
+  function handleScrollAnimation() {
+    const triggerBottom = window.innerHeight * 0.85; // Animates as element enters view
+    const triggerTop = window.innerHeight * 0.15;
+
+    // 1. ANIMATING THE GLASS BOXES
+    boxes.forEach((box) => {
+      const rect = box.getBoundingClientRect();
+      const fillOverlay = box.querySelector(".fill-overlay");
+
+      if (rect.top < triggerBottom && rect.bottom > triggerTop) {
+        // Calculate vertical progress through the viewport segment
+        const totalDistance = triggerBottom - triggerTop;
+        const currentDistance = triggerBottom - rect.top;
+        let progressPercent = (currentDistance / totalDistance) * 100;
+        
+        // Pin values safely between 0 and 100
+        progressPercent = Math.max(0, Math.min(100, progressPercent));
+
+        // Slide the corporate blue color overlay from top to bottom
+        fillOverlay.style.transform = `translateY(${-100 + progressPercent}%)`;
+
+        // Text turns bright white once the color transition covers past halfway (50%)
+        if (progressPercent > 45) {
+          box.classList.add("text-active");
+        } else {
+          box.classList.remove("text-active");
+        }
+      } else if (rect.top >= triggerBottom) {
+        // Safe reset if the user scrolls back up entirely past the box view
+        fillOverlay.style.transform = "translateY(-100%)";
+        box.classList.remove("text-active");
+      } else if (rect.bottom <= triggerTop) {
+        // Fully colored state if scrolled completely underneath
+        fillOverlay.style.transform = "translateY(0%)";
+        box.classList.add("text-active");
+      }
+    });
+
+    // 2. ANIMATING THE FLOWCHART SVG DIAGRAM LINES
+    const section = document.querySelector(".flowchart-container");
+    const sectionRect = section.getBoundingClientRect();
+    
+    if (sectionRect.top < window.innerHeight && sectionRect.bottom > 0) {
+      const sectionHeight = sectionRect.height;
+      const scrolledIntoSection = window.innerHeight - sectionRect.top;
+      let lineProgress = scrolledIntoSection / (window.innerHeight + sectionHeight);
+      lineProgress = Math.max(0, Math.min(1, lineProgress));
+
+      progressLines.forEach((line) => {
+        // Pulls dashoffsets to zero creating fluid blue line growth
+        line.style.strokeDashoffset = 2000 - (lineProgress * 2000);
+      });
+    }
+  }
+
+  // Bind to default window scroll triggers
+  window.addEventListener("scroll", handleScrollAnimation);
+  // Fire once initially to paint components currently already inside view area
+  handleScrollAnimation();
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    // 1. Find out the name of the file the browser is looking at right now
+    const currentPath = window.location.pathname;
+
+    // 2. Grab all the navigation buttons
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    // 3. Remove any accidental highlight first
+    navLinks.forEach(link => link.classList.remove("active"));
+
+    // 4. Match the current page path with the button target path
+    let matched = false;
+    navLinks.forEach(link => {
+      const linkHref = link.getAttribute("href");
+      
+      // Check if the current URL path contains the file name of the button link
+      if (linkHref && currentPath.includes(linkHref) && linkHref !== "index.html" && !linkHref.startsWith("#")) {
+        link.classList.add("active");
+        matched = true;
+      }
+    });
+
+    // 5. Default Safeguard: If we are on the home page or index.html, highlight 'Home'
+    if (!matched) {
+      const homeLink = document.getElementById("nav-home");
+      if (homeLink) {
+        homeLink.classList.add("active");
+      }
+    }
+  });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const revealCards = document.querySelectorAll(".scroll-reveal-card");
+
+  const observerOptions = {
+    root: null, // Relative to the browser viewport layout
+    threshold: 0.15 // Triggers as soon as 15% of the card crosses the visibility line
+  };
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Elements enter the active screen area: Reveal immediately
+        entry.target.classList.add("revealed");
+      } else {
+        // Optional Repeat function: Resets the slide animation once scrolled out of view
+        // If you only want it to happen once ever, simply delete this 'else' block entirely.
+        if (entry.boundingClientRect.top > 0) {
+          entry.target.classList.remove("revealed");
+        }
+      }
+    });
+  }, observerOptions);
+
+  // Bind listener to each pillar element
+  revealCards.forEach((card) => {
+    revealObserver.observe(card);
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const portalBtn = document.getElementById("portal-trigger");
+  const overlay = document.getElementById("global-wipe-overlay");
+
+  if (portalBtn && overlay) {
+    portalBtn.addEventListener("click", function () {
+      // Find where the circle is on the screen to explode outwards directly from its exact current centerpoint position
+      const rect = portalBtn.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      overlay.style.left = `${centerX}px`;
+      overlay.style.top = `${centerY}px`;
+
+      // Inject the expansion scale class layout
+      overlay.classList.add("expanding");
+
+      // Save a storage variable token so contact.html understands it must shrink back down on load
+      sessionStorage.setItem("playPortalTransition", "true");
+      sessionStorage.setItem("portalOriginX", `${centerX}px`);
+      sessionStorage.setItem("portalOriginY", `${centerY}px`);
+
+      // Once full-screen solid block coverage completes (750ms), jump cleanly to the next page
+      setTimeout(() => {
+        window.location.href = "contact.html"; // Ensure this matches your file name exactly
+      }, 750);
+    });
+  }
+});
+
+</script>
+</body>
+</html>

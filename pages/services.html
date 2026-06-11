@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Services - Tek Max Tools</title>
+
+<style>
+
+/* ===== GENERAL ===== */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5f7f9;
+    color: #333;
+   
+}
+
+@font-face {
+    font-family: "Mont";
+    src: url("/fonts/Montserrat-VariableFont_wght.ttf");
+}
+h1 {
+    text-align: center;
+    font-size: 42px;
+    margin-top: 40px;
+    font-weight: 400;
+    color: #2f6f8f;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    font-family: "Mont";
+}
+
+.section {
+     width: 100%;
+     box-sizing: border-box; /* Fixes the overflow */
+     padding: 20px;
+     margin-bottom: 60px;
+     
+}
+.section-title {
+    font-size: 26px;
+    margin-bottom: 30px;
+    color: #1e4f66;
+    text-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    font-family: "Mont";
+}
+
+/* ===== ACCORDION ===== */
+.accordion {
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+    width: 900px;
+    justify-content: center;
+    justify-self: center;
+    
+   
+}
+
+.accordion-item {
+    background: #2f6f8f;
+    border: white 1px solid;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    transition: 0.3s;
+    max-width: 900px;
+    width: 900px;
+     
+}
+
+.accordion-header {
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+    font-family: "Mont";
+}
+
+.accordion-header:hover {
+    background: #2a5f7a;
+}
+
+.arrow {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.arrow img,
+.arrow svg {
+    width: 30px;
+    height: 30px;
+}
+
+/* Rotate when open */
+.accordion-item.active .arrow {
+    transform: rotate(180deg);
+}
+/* ===== CONTENT ===== */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    background: white;
+    transition: max-height 0.4s ease;
+
+}
+
+.content-inner {
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.text {
+    flex: 1;
+    font-family: "Mont";
+}
+
+.text h3 {
+    margin-top: 0;
+    color: #2f6f8f;
+    font-family: "Mont";
+}
+
+.text p {
+    line-height: 1.6;
+    font-family: "Mont";
+}
+
+/* IMAGE PLACEHOLDER */
+.image-placeholder {
+    width: 200px;
+    height: 140px;
+    background: #ddd;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 14px;
+}
+  .pill-navbar {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FFFFFF;
+    border: 4px solid #236B8E;
+    padding: 4px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 9999;
+  }
+
+  .nav-link {
+    color: #236B8E;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .nav-link.active {
+    background-color: #236B8E;
+    color: #FFFFFF;
+    padding: 8px 24px;
+  }
+/* ===== RESPONSIVE ===== */
+@media(max-width: 768px) {
+    .content-inner {
+        flex-direction: column;
+    }
+
+    .image-placeholder {
+        width: 100%;
+    }
+}
+.image-placeholder img {
+    width: 200px;        /* fixed width */
+    height: 140px;       /* fixed height */
+
+    object-fit: cover;   /* THIS IS THE MAGIC */
+    border-radius: 6px;
+
+    display: block;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Our Services</h1>
+
+<!-- ================= SECTION 1 ================= -->
+<div class="section">
+    <div class="section-title">1. Precision Tooling & Industrial Mould Design</div>
+
+    <div class="accordion">
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                Plastic Injection Moulds
+                <span class="arrow">
+                    <img src="/svg/Chevron_Down.svg" alt="arrow">
+                </span>
+            </div>
+            <div class="accordion-content">
+                <div class="content-inner">
+                    <div class="text">
+                        <h3>Plastic Injection Moulds</h3>
+                        <p>
+                        We design and manufacture high-performance plastic injection moulds engineered for flawless,
+                        high-volume production. Our tooling solutions ensure dimensional accuracy, long lifecycle,
+                        and consistent output across millions of cycles in demanding industrial environments.
+                        </p>
+                    </div>
+                    <div class="image-placeholder">
+                        <img src="/images/Plastic Injection Mould.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                Rubber & Elastomer Moulding
+                <span class="arrow"><img src="/svg/Chevron_Down.svg" alt="arrow"></span>
+            </div>
+            <div class="accordion-content">
+                <div class="content-inner">
+                    <div class="text">
+                        <h3>Rubber & Elastomer Moulding</h3>
+                        <p>
+                        Our rubber moulding solutions are built for complex geometries and high durability.
+                        We specialize in heavy-duty moulds designed to handle extreme pressure and temperature
+                        conditions while maintaining precision and consistency.
+                        </p>
+                    </div>
+                    <div class="image-placeholder">
+                        <img src="/images/Rubber & Elastomer Moulding.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                Tyre & Bladder Tooling
+                <span class="arrow"><img src="/svg/Chevron_Down.svg" alt="arrow"></span>
+            </div>
+            <div class="accordion-content">
+                <div class="content-inner">
+                    <div class="text">
+                        <h3>Tyre & Bladder Tooling</h3>
+                        <p>
+                        We deliver high-precision tyre and bladder moulds sourced through a vetted global network.
+                        Our solutions ensure optimal curing performance, tread accuracy, and long-term durability
+                        across high-demand production cycles.
+                        </p>
+                    </div>
+                    <div class="image-placeholder"><img src="/images/Tyre & Bladder Tooling.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+</div>
+
+<!-- ================= SECTION 2 ================= -->
+<div class="section">
+    <div class="section-title">2. Automotive OEM Project Management</div>
+
+    <div class="accordion">
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                New Model Development
+                <span class="arrow"><img src="/svg/Chevron_Down.svg" alt="arrow"></span>
+            </div>
+            <div class="accordion-content">
+                <div class="content-inner">
+                    <div class="text">
+                        <h3>New Model Development</h3>
+                        <p>
+                        We provide complete engineering and tooling support for new vehicle models,
+                        transforming concepts into fully operational production lines with precision
+                        and efficiency.
+                        </p>
+                    </div>
+                    <div class="image-placeholder"><img src="/images/New Model Development Automotive.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                International Project Transfers
+                <span class="arrow"><img src="/svg/Chevron_Down.svg" alt="arrow"></span>
+            </div>
+            <div class="accordion-content">
+                <div class="content-inner">
+                    <div class="text">
+                        <h3>International Project Transfers</h3>
+                        <p>
+                        We manage the relocation of manufacturing systems and tooling across countries,
+                        ensuring seamless transitions with minimal downtime and full operational continuity.
+                        </p>
+                    </div>
+                    <div class="image-placeholder"><img src="/images/International Project Transfers.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ================= SECTION 3 ================= -->
+<div class="section">
+    <div class="section-title">3. Engineering Support & Agricultural Solutions</div>
+
+    <div class="accordion">
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                Mould Repair & Optimization
+                <span class="arrow"><img src="/svg/Chevron_Down.svg" alt="arrow"></span>
+            </div>
+            <div class="accordion-content">
+                <div class="content-inner">
+                    <div class="text">
+                        <h3>Mould Repair & Optimization</h3>
+                        <p>
+                        Our expert engineering team delivers rapid repair, correction, and optimization
+                        services for existing moulds, ensuring minimal downtime and maximum performance.
+                        </p>
+                    </div>
+                    <div class="image-placeholder"><img src="/images/Mould Repair & Optimization.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                Agricultural Machinery Development
+                <span class="arrow"><img src="/svg/Chevron_Down.svg" alt="arrow"></span>
+            </div>
+            <div class="accordion-content">
+                <div class="content-inner">
+                    <div class="text">
+                        <h3>Agricultural Machinery Development</h3>
+                        <p>
+                        We design and develop specialized agricultural machinery tailored to modern farming needs,
+                        ensuring efficiency, durability, and enhanced field performance.
+                        </p>
+                    </div>
+                    <div class="image-placeholder"><img src="/images/Agricultural Machinery Development.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                Macerators & Spare Parts Supply
+                <span class="arrow"><img src="/svg/Chevron_Down.svg" alt="arrow"></span>
+            </div>
+            <div class="accordion-content">
+                <div class="content-inner">
+                    <div class="text">
+                        <h3>Macerators & Spare Parts Supply</h3>
+                        <p>
+                        We supply high-performance macerators and precision-engineered spare parts,
+                        ensuring smooth operation, reduced blockages, and reliable long-term usage.
+                        </p>
+                    </div>
+                    <div class="image-placeholder"><img src="/images/Macerators & Spare Parts Supply.jpg" alt=""></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ================= SECTION 4 ================= -->
+<div class="section">
+    <div class="section-title">4. Advanced Agricultural Engineering Solutions</div>
+
+    <div class="accordion">
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                Bespoke Agricultural Machinery Development
+                <span class="arrow">
+                    <img src="/svg/Chevron_Down.svg" alt="arrow">
+                </span>
+            </div>
+            <div class="accordion-content">
+                <div class="content-inner">
+                    <div class="text">
+                        <h3>Bespoke Agricultural Machinery Development</h3>
+                        <p>
+                        We design and develop specialized agricultural machinery tailored to modern farming needs,
+                        ensuring efficiency, durability, and long-term performance in demanding field conditions.
+                        </p>
+                    </div>
+                    <div class="image-placeholder">
+                        <img src="/images/Bespoke Agricultural Machinery Development.jpg" alt="Agricultural Machinery">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                High-Performance Macerators & Distributors
+                <span class="arrow">
+                    <img src="/svg/Chevron_Down.svg" alt="arrow">
+                </span>
+            </div>
+            <div class="accordion-content">
+                <div class="content-inner">
+                    <div class="text">
+                        <h3>High-Performance Macerators & Distributors</h3>
+                        <p>
+                        Our tool-steel maceration systems are engineered for smooth material processing,
+                        preventing blockages and ensuring consistent, even distribution across agricultural fields.
+                        </p>
+                    </div>
+                    <div class="image-placeholder">
+                        <img src="/images/High-Performance Macerators & Distributors.jpg" alt="Macerators">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                Component & Spare Parts Sourcing
+                <span class="arrow">
+                    <img src="/svg/Chevron_Down.svg" alt="arrow">
+                </span>
+            </div>
+            <div class="accordion-content">
+                <div class="content-inner">
+                    <div class="text">
+                        <h3>Component & Spare Parts Sourcing</h3>
+                        <p>
+                        We supply high-quality, custom-fabricated components globally, manufactured according to
+                        exact client specifications, ensuring reliability and performance.
+                        </p>
+                    </div>
+                    <div class="image-placeholder">
+                        <img src="/images/Component & Spare Parts Sourcing.jpg" alt="Spare Parts">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<nav class="pill-navbar">
+    <a id="nav-home" href="/index.html" class="nav-link ">Home</a>
+    <a id="nav-about" href="/pages/aboutus.html" class="nav-link">About Us</a>
+    <a id="nav-india" href="/pages/services.html" class="nav-link">Our Services</a>
+    <a id="nav-ireland" href="/pages/ireland.html" class="nav-link">Ireland</a>
+    <a id="nav-china" href="/pages/india.html" class="nav-link">India</a>
+    <a id="nav-contact" href="/pages/contactus.html" class="nav-link">Contact Us</a>
+  </nav>
+
+
+<script>
+
+/* ACCORDION FUNCTION (ONLY ONE OPEN AT A TIME) */
+const items = document.querySelectorAll(".accordion-item");
+
+items.forEach(item => {
+    const header = item.querySelector(".accordion-header");
+
+    header.addEventListener("click", () => {
+        const isOpen = item.classList.contains("active");
+
+        items.forEach(i => {
+            i.classList.remove("active");
+            i.querySelector(".accordion-content").style.maxHeight = null;
+        });
+
+        if (!isOpen) {
+            item.classList.add("active");
+            const content = item.querySelector(".accordion-content");
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    // 1. Find out the name of the file the browser is looking at right now
+    const currentPath = window.location.pathname;
+
+    // 2. Grab all the navigation buttons
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    // 3. Remove any accidental highlight first
+    navLinks.forEach(link => link.classList.remove("active"));
+
+    // 4. Match the current page path with the button target path
+    let matched = false;
+    navLinks.forEach(link => {
+      const linkHref = link.getAttribute("href");
+      
+      // Check if the current URL path contains the file name of the button link
+      if (linkHref && currentPath.includes(linkHref) && linkHref !== "index.html" && !linkHref.startsWith("#")) {
+        link.classList.add("active");
+        matched = true;
+      }
+    });
+
+    // 5. Default Safeguard: If we are on the home page or index.html, highlight 'Home'
+    if (!matched) {
+      const homeLink = document.getElementById("nav-home");
+      if (homeLink) {
+        homeLink.classList.add("active");
+      }
+    }
+  });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tek Max Tools | Ireland Operations - Agricultural Assemblies</title>
+  <style>
+    /* ==========================================================================
+       1. SYSTEM TYPOGRAPHY & CORE RESET ARCHITECTURE
+       ========================================================================== */
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+      overflow-x: hidden;
+      width: 100%;
+    }
+   .pill-navbar {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FFFFFF;
+    border: 4px solid #236B8E;
+    padding: 4px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 9999;
+  }
+
+  .nav-link {
+    color: #236B8E;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .nav-link.active {
+    background-color: #236B8E;
+    color: #FFFFFF;
+    padding: 8px 24px;
+  }
+    /* Master window container flow configuration */
+    .viewport-stack-wrapper {
+      width: 100%;
+      position: relative;
+    }
+
+    /* Base layout metrics for standard macro screen-blocks */
+    .macro-section {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ==========================================================================
+       2. CINEMATIC HERO SECTION STYLING (NATURAL FLOW START)
+       ========================================================================== */
+    .hero-variant {
+      background: #000000;
+      position: relative;
+      overflow: hidden;
+      padding: 0 20px;
+    }
+
+    .video-container {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.70);
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 950px;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .hero-content h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 15px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: #cbd5e1;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       3. NATURAL FLOW SERVICES SECTION WITH STICKY INNER CARD DECK
+       ========================================================================== */
+    .services-macro-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background-color: #f8fafc;
+      overflow: hidden;
+    }
+
+    /* Sticky track layout viewport system */
+    .services-sticky-viewport {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Persistent Title Architecture */
+    .services-title-label {
+      font-size: 2rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: #2B7A9B;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      z-index: 100;
+    }
+
+    /* Container canvas holding the stacked elements */
+    .services-deck-canvas {
+      position: relative;
+      width: 70vw;
+      height: 70vh;
+    }
+
+    /* Target inner panel divs natively for the slider transition framework */
+    .card-container-3d {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      border-radius: 16px;
+      padding: 48px;
+      overflow: hidden;
+      border: 1px solid #f1f5f9;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 10px 25px rgba(0, 0, 0, 0.04);
+      
+      /* Card deck layout animations state definitions */
+      transform: translateY(100vh);
+      opacity: 0;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+    }
+
+    /* Visible State card setup */
+    .card-container-3d.active-deck-card {
+      transform: translateY(0);
+      opacity: 1;
+      z-index: 30;
+    }
+
+    /* Previous card steps down subtly backward beneath the incoming layer */
+    .card-container-3d.past-deck-card {
+      transform: translateY(-4vh) scale(0.95);
+      opacity: 0.4;
+      z-index: 15;
+    }
+
+    .grid-layout {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: 40px;
+      height: 100%;
+      width: 100%;
+      align-items: center;
+    }
+
+    .left-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .tagline {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #2B7A9B;
+    }
+
+    .main-heading {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-top: 6px;
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .description-box {
+      height: 160px;
+      overflow-y: auto;
+      padding-right: 8px;
+    }
+
+    .description-box p {
+      font-size: 1rem;
+      color: #475569;
+      line-height: 1.6;
+    }
+
+    /* Interactive Component Controllers */
+    .navigation-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 24px;
+    }
+
+    .btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.2s ease;
+      background: none;
+    }
+
+    .btn-prev {
+      border: 1px solid #cbd5e1;
+      color: #475569;
+    }
+
+    .btn-prev:hover {
+      background-color: #2B7A9B;
+      color: #ffffff;
+      border-color: #2B7A9B;
+    }
+
+    .btn-next {
+      background-color: #2B7A9B;
+      color: #ffffff;
+      border: none;
+      box-shadow: 0 4px 10px rgba(43, 122, 155, 0.3);
+    }
+
+    .btn-next:hover {
+      background-color: #1E5A73;
+    }
+
+    .counter-text {
+      font-size: 0.8rem;
+      font-family: monospace;
+      letter-spacing: 0.1em;
+      color: #94a3b8;
+    }
+
+    .right-column {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    /* Loading Wheel Graphics System */
+    .circle-frame-wrapper {
+      position: relative;
+      width: 260px;
+      height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .circle-frame-wrapper svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    #loading-circle-border {
+      transition: stroke-dashoffset 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .image-mask-container {
+      width: 84%;
+      height: 84%;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+      background-color: #f1f5f9;
+      box-shadow: inset 0 4px 10px rgba(0,0,0,0.08);
+    }
+
+    .image-track {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      will-change: transform;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .image-track img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .static-circle-frame {
+      width: 230px;
+      height: 230px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid #f1f5f9;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .static-circle-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Step-down element transition layouts */
+    .animate-slide-down {
+      animation: slideDown 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==========================================================================
+       4. CONTEXT CONTACT SECTION STYLING (NATURAL FOOTER BREAKOUT)
+       ========================================================================== */
+    .connect-section {
+      background-color: #ffffff;
+      padding: 60px 20px;
+      position: relative;
+      z-index: 50;
+    }
+
+    .connect-container {
+      max-width: 1100px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .connect-tagline {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #2B7A9B;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .connect-main-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .connect-description {
+      font-size: 1.1rem;
+      color: #475569;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .connect-trust-note {
+      font-size: 0.95rem;
+      color: #64748b;
+      border-left: 3px solid #2B7A9B;
+      padding-left: 16px;
+      font-style: italic;
+    }
+
+    .connect-portal-side {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Micro-pulse radar configuration mechanics */
+    .portal-click-wrapper {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .portal-core-button {
+      width: 140px;
+      height: 140px;
+      background-color: #2B7A9B;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1.1rem;
+      z-index: 5;
+      box-shadow: 0 10px 25px rgba(43, 122, 155, 0.4);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .portal-click-wrapper:hover .portal-core-button {
+      transform: scale(1.05);
+      background-color: #1E5A73;
+    }
+
+    .portal-wave {
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      background-color: rgba(43, 122, 155, 0.2);
+      border-radius: 50%;
+      z-index: 1;
+      animation: radarPulse 2.5s infinite linear;
+    }
+
+    .wave-2 { animation-delay: 0.8s; }
+    .wave-3 { animation-delay: 1.6s; }
+
+    @keyframes radarPulse {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(1.8); opacity: 0; }
+    }
+
+    /* ==========================================================================
+       5. HARDWARE MEDIA BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .services-deck-canvas { width: 85vw; height: 75vh; }
+      .hero-content h1 { font-size: 2.3rem; }
+      .connect-main-title { font-size: 2rem; }
+    }
+
+    @media (max-width: 768px) {
+      .services-deck-canvas { width: 90vw; height: 80vh; }
+      .card-container-3d { padding: 24px; }
+      .grid-layout { grid-template-columns: 1fr; gap: 20px; }
+      .connect-container { grid-template-columns: 1fr; gap: 40px; }
+      .right-column { order: -1; height: 35%; }
+      .left-column { height: 65%; }
+      .circle-frame-wrapper { width: 150px; height: 150px; }
+      .static-circle-frame { width: 140px; height: 140px; }
+      .hero-content h1 { font-size: 1.6rem; }
+      .main-heading { font-size: 1.25rem; margin-bottom: 8px; }
+      .description-box { height: 120px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="viewport-stack-wrapper" id="master-viewport-deck">
+
+    <section class="macro-section hero-variant" id="section-hero">
+      <div class="video-container">
+        <video autoplay loop muted playsinline>
+          <source src="/videos/irelandvideo.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+      </div>
+      <div class="hero-content">
+        <h1>Tek Max Tools, Ireland</h1>
+        <p class="subtitle">Manufacturing high-durability moulded elements, robust galvanized frameworks, and high-pressure hydraulic infrastructure for Western Europe's leading slurry distribution systems.</p>
+      </div>
+    </section>
+
+    <div class="services-macro-container" id="section-services">
+      <div class="services-sticky-viewport">
+        
+        <h2 class="services-title-label">Our Services</h2>
+        
+        <div class="services-deck-canvas">
+          
+          <div class="card-container-3d active-deck-card" data-card="1">
+            <div id="hydraulic-card-wrapper" style="height: 100%; width: 100%;"></div>
+          </div>
+
+          <div class="card-container-3d" data-card="2">
+            <div id="nested-multi-material-wrapper" style="height: 100%; width: 100%;"></div>
+          </div>
+
+          <div class="card-container-3d" data-card="3">
+            <div id="galvanized-card-wrapper" style="height: 100%; width: 100%;"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <section class="macro-section connect-section" id="section-connect">
+      <div class="connect-container">
+        <div class="connect-text-side">
+          <span class="connect-tagline">TAKE THE NEXT STEP</span>
+          <h2 class="connect-main-title">Let’s Transform Your Blueprints Into Operational Certainty.</h2>
+          <p class="connect-description">
+            Whether you are looking to secure an audited, Tier-1 industrial tool manufacturer or scale your European agricultural fleet with market-leading macerator technology—your deadlines are our absolute legal covenants.
+          </p>
+          <div class="connect-trust-note">
+            <p>From our design floors in India to our frontline service hubs in Ireland, your operational continuity is our absolute priority.</p>
+          </div>
+        </div>
+        <div class="connect-portal-side">
+          <div class="portal-click-wrapper" id="portal-trigger">
+            <div class="portal-wave wave-1"></div>
+            <div class="portal-wave wave-2"></div>
+            <div class="portal-wave wave-3"></div>
+            <div class="portal-core-button">
+              <span>Contact Us</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+ <nav class="pill-navbar">
+    <a id="nav-home" href="/index.html" class="nav-link ">Home</a>
+    <a id="nav-about" href="/pages/aboutus.html" class="nav-link">About Us</a>
+    <a id="nav-india" href="/pages/services.html" class="nav-link">Our Services</a>
+    <a id="nav-ireland" href="/pages/ireland.html" class="nav-link">Ireland</a>
+    <a id="nav-china" href="/pages/india.html" class="nav-link">India</a>
+    <a id="nav-contact" href="/pages/contactus.html" class="nav-link">Contact Us</a>
+  </nav>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      
+      // Section 1 and Section 3 Base Dataset strings
+      const hydraulicData = {
+        title: "Integrated 200-Bar Orbital Drive Assemblies",
+        desc: "To ensure modern farm machinery operates flawlessly under intense seasonal workloads, we supply and integrate top-tier 4-port tandem hydraulic orbital motors. These heavy-duty drives deliver a powerful 200 bars of continuous pressure to maintain high-torque consistency across heavy field macerator configurations. Every motor assembly is backed by certified operational warranties to guarantee field continuity."
+      };
+
+      const galvanizedData = {
+        title: "Blueprint-Matched Heavy Fabrication & Field Validation",
+        desc: "Following a meticulous 3-year research, development, and testing journey alongside frontline Irish farming contractors, our components are perfectly optimized for maximum field reliability. We fabricate, machine, and fully galvanize heavy-duty structural parts designed for trailing shoes, lightweight yet ultra-strong lasered booms, and specialized distribution docking stations. Built strictly to custom blueprint specifications, our component systems have been trusted across Ireland and mainland Europe since our successful production launch in 2024."
+      };
+
+      // Section 2 Bullet Points nested array mapping onto the interactive graphical layout
+      const multiMaterialSubServices = [
+        {
+          title: "Custom-Moulded Rubber Elements",
+          desc: "High-elasticity placement boots, chemical-resistant flexible seals, and targeted splash protectors engineered to survive continuous heavy weather exposure."
+        },
+        {
+          title: "Industrial Plastic Components",
+          desc: "Lightweight, ultra-durable internal directional flow units, wear rings, and smooth low-friction hose guidelines to prevent premature system failure."
+        },
+        {
+          title: "Precision Machined Metal Parts",
+          desc: "Rugged steel components treated meticulously with advanced, protective industrial anti-rust coatings to withstand highly corrosive chemical slurry profiles."
+        }
+      ];
+
+      // State engine values
+      // 0 = Hero | 1 = Services Card 1 | 2 = Services Card 2 | 3 = Services Card 3 | 4 = Connect Portal
+      let activeState = 0; 
+      let activeSubIndex = 0; 
+      let isScrollingLocked = false; 
+
+      const deckCards = document.querySelectorAll(".card-container-3d");
+      const sectionHero = document.getElementById("section-hero");
+      const sectionServices = document.getElementById("section-services");
+      const sectionConnect = document.getElementById("section-connect");
+
+      // --- RENDERING CONFIGURATORS ---
+      function paintStaticCards() {
+        // Render Card 1 (Hydraulics)
+        document.getElementById("hydraulic-card-wrapper").innerHTML = `
+          <div class="grid-layout">
+            <div class="left-column">
+              <div>
+                <span class="tagline">High-Performance Hydraulic Power Sourcing</span>
+                <h3 class="main-heading">${hydraulicData.title}</h3>
+              </div>
+              <div class="description-box"><p>${hydraulicData.desc}</p></div>
+            </div>
+            <div class="right-column">
+              <div class="static-circle-frame"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500"></div>
+            </div>
+          </div>
+        `;
+
+        // Render Card 3 (Galvanization Infrastructure)
+        document.getElementById("galvanized-card-wrapper").innerHTML = `
+          <div class="grid-layout">
+            <div class="left-column">
+              <div>
+                <span class="tagline">Structural Galvanized Infrastructure & Field Integration</span>
+                <h3 class="main-heading">${galvanizedData.title}</h3>
+              </div>
+              <div class="description-box"><p>${galvanizedData.desc}</p></div>
+            </div>
+            <div class="right-column">
+              <div class="static-circle-frame"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=500"></div>
+            </div>
+          </div>
+        `;
+      }
+
+      // Dynamic sub-carousel rendering into Card 2 to map bullet points elegantly
+      function paintNestedMultiMaterialCard() {
+        const target = document.getElementById("nested-multi-material-wrapper");
+        if (!target) return;
+
+        const currentSlide = multiMaterialSubServices[activeSubIndex];
+        const strokeTotal = 289;
+        const currentOffset = strokeTotal - (strokeTotal * (activeSubIndex / (multiMaterialSubServices.length - 1)));
+
+        target.innerHTML = `
+          <div class="grid-layout">
+            <div class="left-column">
+              <div>
+                <span class="tagline">Extreme-Wear Custom Component Moulding (Multi-Material Production)</span>
+                <h3 id="c2-title" class="main-heading">${currentSlide.title}</h3>
+              </div>
+              <div class="description-box">
+                <p id="c2-desc">${currentSlide.desc}</p>
+              </div>
+              <div class="navigation-row">
+                <button id="nest-prev" class="btn btn-prev">&#8592;</button>
+                <button id="nest-next" class="btn btn-next">&#8594;</button>
+                <span class="counter-text">${activeSubIndex + 1} / ${multiMaterialSubServices.length}</span>
+              </div>
+            </div>
+            <div class="right-column">
+              <div class="circle-frame-wrapper">
+                <svg viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="46" stroke="#f1f5f9" stroke-width="2.5" fill="transparent" />
+                  <circle id="loading-circle-border" cx="50" cy="50" r="46" stroke="#2B7A9B" stroke-width="3" fill="transparent" 
+                          stroke-dasharray="${strokeTotal}" stroke-dashoffset="${currentOffset}" />
+                </svg>
+                <div class="image-mask-container">
+                  <div class="image-track" style="transform: translateX(-${activeSubIndex * 100}%);">
+                    <img src="https://images.unsplash.com/photo-1537462715879-360eeb61a0bc?w=500">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500">
+                    <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=500">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        document.getElementById("c2-title").classList.add("animate-slide-down");
+        document.getElementById("c2-desc").classList.add("animate-slide-down");
+
+        document.getElementById("nest-next").onclick = (e) => { e.stopPropagation(); advanceSubSlide(); };
+        document.getElementById("nest-prev").onclick = (e) => { e.stopPropagation(); regressSubSlide(); };
+      }
+
+      function advanceSubSlide() {
+        if (activeSubIndex < multiMaterialSubServices.length - 1) { 
+          activeSubIndex++; 
+          paintNestedMultiMaterialCard(); 
+        }
+      }
+
+      document.getElementById("portal-trigger").onclick = () => {
+        window.location.href = "mailto:info@tekmaxtools.com";
+      };
+
+      function regressSubSlide() {
+        if (activeSubIndex > 0) { 
+          activeSubIndex--; 
+          paintNestedMultiMaterialCard(); 
+        }
+      }
+
+      // --- HIGH PERFORMANCE STACK ENGINE SCROLL HANDLERS ---
+      function updateCardDeckLayers() {
+        deckCards.forEach((card) => {
+          const cardIdx = parseInt(card.getAttribute("data-card"));
+          if (cardIdx === activeState) {
+            card.className = "card-container-3d active-deck-card";
+          } else if (cardIdx < activeState) {
+            card.className = "card-container-3d past-deck-card";
+          } else {
+            card.className = "card-container-3d";
+          }
+        });
+      }
+
+      function handleMacroNavigation(direction) {
+        if (isScrollingLocked) return true;
+
+        // SCENARIO 1: AT HERO -> Scroll DOWN -> Switch smoothly to Card 1
+        if (activeState === 0 && direction === "down") {
+          isScrollingLocked = true;
+          activeState = 1;
+          updateCardDeckLayers();
+          sectionServices.scrollIntoView({ behavior: "smooth" });
+          setTimeout(() => { isScrollingLocked = false; }, 800);
+          return true;
+        }
+
+        // SCENARIO 2: AT CARD 1 -> Scroll UP -> Return back to Hero
+        if (activeState === 1 && direction === "up") {
+          isScrollingLocked = true;
+          activeState = 0;
+          sectionHero.scrollIntoView({ behavior: "smooth" });
+          setTimeout(() => { isScrollingLocked = false; }, 800);
+          return true;
+        }
+
+        // SCENARIO 3: RUN INTERLOCKING CARD INCREMENTATION OVER DECK TRACK
+        if (direction === "down" && activeState >= 1 && activeState < 3) {
+          isScrollingLocked = true;
+          activeState++;
+          updateCardDeckLayers();
+          setTimeout(() => { isScrollingLocked = false; }, 800);
+          return true;
+        }
+
+        // SCENARIO 4: RUN INTERLOCKING CARD DECREMENTATION OVER DECK TRACK
+        if (direction === "up" && activeState > 1 && activeState <= 3) {
+          isScrollingLocked = true;
+          activeState--;
+          updateCardDeckLayers();
+          setTimeout(() => { isScrollingLocked = false; }, 800);
+          return true;
+        }
+
+        // SCENARIO 5: AT CARD 3 -> Scroll DOWN -> Final release to Contact Section
+        if (activeState === 3 && direction === "down") {
+          isScrollingLocked = true;
+          activeState = 4;
+          sectionConnect.scrollIntoView({ behavior: "smooth" });
+          setTimeout(() => { isScrollingLocked = false; }, 800);
+          return false;
+        }
+
+        // SCENARIO 6: AT CONNECT PANEL -> Scroll UP -> Re-engage Sticky Deck Card 3
+        if (activeState === 4 && direction === "up") {
+          isScrollingLocked = true;
+          activeState = 3;
+          updateCardDeckLayers();
+          sectionServices.scrollIntoView({ behavior: "smooth" });
+          setTimeout(() => { isScrollingLocked = false; }, 800);
+          return true;
+        }
+
+        return false;
+      }
+
+      // --- EVENTS CAPTURE TRAPS (Passive Overrides) ---
+      window.addEventListener("wheel", (event) => {
+        if (Math.abs(event.deltaY) < 30) return;
+        const direction = event.deltaY > 0 ? "down" : "up";
+
+        if (activeState >= 1 && activeState <= 3) {
+          event.preventDefault();
+          handleMacroNavigation(direction);
+        } else {
+          const dynamicLock = handleMacroNavigation(direction);
+          if (dynamicLock) event.preventDefault();
+        }
+      }, { passive: false });
+
+      let touchStartY = 0;
+      window.addEventListener("touchstart", (e) => { 
+        touchStartY = e.touches[0].clientY; 
+      }, { passive: true });
+      
+      window.addEventListener("touchmove", (e) => {
+        if (activeState >= 1 && activeState <= 3) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      window.addEventListener("touchend", (e) => {
+        let touchEndY = e.changedTouches[0].clientY;
+        let threshold = 50; 
+        
+        if (Math.abs(touchStartY - touchEndY) < threshold) return;
+        const direction = touchStartY - touchEndY > 0 ? "down" : "up";
+
+        if (activeState >= 1 && activeState <= 3) {
+          e.preventDefault();
+          handleMacroNavigation(direction);
+        } else {
+          const dynamicLock = handleMacroNavigation(direction);
+          if (dynamicLock) e.preventDefault();
+        }
+      }, { passive: false });
+
+      // Run App Builders
+      paintStaticCards();
+      paintNestedMultiMaterialCard();
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+    // 1. Find out the name of the file the browser is looking at right now
+    const currentPath = window.location.pathname;
+
+    // 2. Grab all the navigation buttons
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    // 3. Remove any accidental highlight first
+    navLinks.forEach(link => link.classList.remove("active"));
+
+    // 4. Match the current page path with the button target path
+    let matched = false;
+    navLinks.forEach(link => {
+      const linkHref = link.getAttribute("href");
+      
+      // Check if the current URL path contains the file name of the button link
+      if (linkHref && currentPath.includes(linkHref) && linkHref !== "index.html" && !linkHref.startsWith("#")) {
+        link.classList.add("active");
+        matched = true;
+      }
+    });
+
+    // 5. Default Safeguard: If we are on the home page or index.html, highlight 'Home'
+    if (!matched) {
+      const homeLink = document.getElementById("nav-home");
+      if (homeLink) {
+        homeLink.classList.add("active");
+      }
+    }
+  });
+
+  </script>
+</body>
+</html>

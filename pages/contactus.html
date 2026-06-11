@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Executive Portal</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // Replace with your actual EmailJS Public Key
+            emailjs.init("YOUR_PUBLIC_KEY");
+        })();
+    </script>
+    <style>
+        /* ==========================================================================
+           EXECUTIVE FORM SECTION WITH ANIMATED GRADIENT BACKGROUND
+           ========================================================================== */
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(270deg, #113f5b, #1c638d, #257fa5, #0c293c);
+        }
+        .pill-navbar {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FFFFFF;
+    border: 4px solid #236B8E;
+    padding: 4px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 9999;
+  }
+
+  .nav-link {
+    color: #236B8E;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .nav-link.active {
+    background-color: #236B8E;
+    color: #FFFFFF;
+    padding: 8px 24px;
+  }
+        
+        h1 {
+            margin: 0;
+        }
+        
+        .connect-section {
+            position: relative;
+            
+            background-size: 600% 600%;
+            animation: executiveLiveWave 16s ease infinite;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        @keyframes executiveLiveWave {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Outlying Floating Header Title */
+        .form-section-title {
+            font-size: 3rem;
+            font-weight: 400;
+            color: #ffffff;
+            margin-bottom: 40px;
+            margin-top: 30px;
+            letter-spacing: 0.02em;
+        }
+
+        /* Noticeable Distinct Off-White Container Canvas with Custom Drop Shadow */
+        .connect-container {
+            max-width: 1000px;
+            width: 100%;
+            background-color: #f7fafc; /* Premium noticeable distinct off-white */
+            border-radius: 35px;
+            display: grid;
+            grid-template-columns: 5fr 6fr; /* Flipped: Image on left, form on right */
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Left Column Image Slot */
+        .connect-image-panel {
+            width: 100%;
+            height: 100%;
+            min-height: 550px;
+        }
+
+        .connect-image-panel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Right Column Form Layout */
+        .connect-form-side {
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #ffffff; /* Contrast internal container panel */
+        }
+
+        #contact-form-element {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        /* Interactive Floating Line Input Field Architecture */
+        .input-group {
+            position: relative;
+            width: 100%;
+            border-bottom: 1.5px solid #333333;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px 0;
+            background: none;
+            border: none;
+            outline: none;
+            font-size: 1.4rem;
+            color: black;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* Smooth Floating Label Labels */
+        .input-group label {
+            position: absolute;
+            left: 0;
+            top: 10px;
+            font-size: 1.4rem;
+            color: #1c638d;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            opacity: 0.85;
+        }
+
+        /* Triggers line animation on element selection focus */
+        .input-group input:focus ~ label,
+        .input-group input:not(:placeholder-shown) ~ label {
+            top: -20px;
+            font-size: 0.9rem;
+            opacity: 1;
+            color: #333333;
+        }
+
+        /* ==========================================================================
+           EXECUTIVE FILE UPLOAD SYSTEM STYLING
+           ========================================================================== */
+        .file-upload-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .file-upload-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1c638d;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .file-drop-zone {
+            position: relative;
+            border: 2px dashed #1c638d;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            background-color: #f8fafc;
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .file-drop-zone:hover {
+            background-color: #f1f5f9;
+            border-color: #257fa5;
+        }
+
+        .file-drop-zone input[type="file"] {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-info-text {
+            font-size: 1rem;
+            color: #475569;
+        }
+
+        .file-name-display {
+            font-weight: 600;
+            color: #1c638d;
+            margin-top: 4px;
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .form-action-row {
+            margin-top: 15px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Bottom-to-Top Curtain Action Button Mechanism */
+        .curtain-btn {
+            position: relative;
+            padding: 12px 36px;
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: #ffffff;
+            background-color: transparent;
+            border: 2px solid #1c638d;
+            cursor: pointer;
+            z-index: 1;
+            overflow: hidden;
+            
+            /* Build gradient field size variables */
+            background-image: linear-gradient(to top, #ffffff 50%, #1c638d 50%);
+            background-size: 100% 200%;
+            background-position: top;
+            transition: background-position 0.4s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s ease;
+        }
+
+        /* Curtain Trigger State */
+        .curtain-btn:hover {
+            background-position: bottom;
+            color: #1c638d;
+        }
+
+        .curtain-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background-position: top;
+            color: #ffffff;
+        }
+
+        /* Status feedback messaging elements */
+        .status-msg {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .twocontact p{
+           text-align: center;
+           font-size: 25px;
+           margin-top: 30px;
+           color: white;
+        }
+
+        /* Responsive Adaptation Rule Matrix */
+        @media (max-width: 850px) {
+            .connect-container {
+                grid-template-columns: 1fr;
+            }
+            .connect-image-panel {
+                height: 250px;
+                min-height: auto;
+            }
+            .connect-form-side {
+                padding: 40px 30px;
+            }
+            .form-section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+
+    
+
+        /* Horizontal SVG Alignment Matrix */
+.social-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 24px; /* Perfectly balances horizontal spacing */
+  padding: 10px 0;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.social-link-item {
+  color: #ffffff; /* Sets the default outline stroke colors directly to white */
+  display: inline-block;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.social-link-item svg {
+  width: 50px;  /* Clean executive structural size display */
+  height: 50px;
+  display: block;
+}
+
+/* Elegant micro-interaction when hovering */
+.social-link-item:hover {
+  transform: translateY(-3px);
+  color: #f1f5f9; /* Subtle change on hover while staying premium white */
+}
+
+/* ==========================================================================
+   PRODUCTION RE-ENGINEERED CORPORATE FIVE-COLUMN FOOTER SYSTEM
+   ========================================================================== */
+.main-corporate-footer {
+  background-color: #1c638d;
+  /* Changed padding: removed the bottom 20px padding so the text can truly touch the edge */
+  padding: 40px 0px 0px 0px; 
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #ffffff;
+  
+  /* FORCE FOOTER TO BE A VERTICAL FLEXBOX */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 350px; /* Gives the footer enough body depth to push down against */
+}
+
+/* Master alignment container utilizing modern CSS Grid */
+.footer-grid-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  display: grid;
+  /* Balanced layout distribution split across five functional spaces */
+  grid-template-columns: 2.5fr 1.5fr 1.5fr 3.5fr 2fr;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Base Headings Layout Formatting */
+.footer-column-heading {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+/* Logo container matching white background layout bounding box */
+.logo-white-block {
+ 
+ 
+  display: flex;
+ width: 300px;
+  height: 200px;
+  align-items: center;
+
+}
+
+.brand-logo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Lists and Links Reset Mechanics */
+.footer-links-list, 
+.footer-services-static-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Interactive Navigation Link Items styling */
+.footer-links-list a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.15rem;
+  font-weight: 400;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.footer-links-list a:hover {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+/* Service Registry Column Styling */
+.footer-services-static-list li {
+  font-size: 1.05rem;
+  line-height: 1.45;
+  font-weight: 300;
+  opacity: 0.9;
+  position: relative;
+}
+
+/* Horizontal Social Media Layout Block */
+.social-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 5px;
+}
+
+.social-link-item {
+  color: #ffffff;
+  display: inline-block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0.9;
+}
+
+.social-link-item svg {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
+.social-link-item:hover {
+  transform: translateY(-3px);
+  opacity: 1;
+}
+.finalp{
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centered cleanly inside its baseline box */
+  font-size: 1.3rem;
+  text-align: center;
+  margin-bottom: 0;
+  height: 60px; /* Slightly tightened height for a cleaner corporate layout */
+  
+  /* THE MAGIC KEY: Pushes the element cleanly to the absolute bottom of the footer container */
+  margin-top: auto; 
+  
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.15); /* Optional: dynamic micro-shading band across the absolute bottom edge */
+}
+/* Responsive Adaptive Viewport Adjustments */
+@media (max-width: 1024px) {
+  .footer-grid-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 20px;
+  }
+  .brand-column {
+    grid-column: span 2;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-corporate-footer {
+    padding: 40px 20px;
+  }
+  .footer-grid-container {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+  .brand-column {
+    grid-column: span 1;
+  }
+}
+    </style>
+</head>
+<body>
+
+    <section class="macro-section connect-section" id="section-connect">
+      
+      <h2 class="form-section-title">Contact Us</h2>
+      
+      <div class="connect-container">
+        
+        <div class="connect-image-panel">
+          <img src="/images/contactusimg.jpg" alt="Farming Machinery">
+        </div>
+
+        <div class="connect-form-side">
+          <form action="#" method="POST" id="contact-form-element">
+            
+            <div class="input-group">
+              <input type="text" id="first-name" name="first_name" required placeholder=" ">
+              <label for="first-name">First Name</label>
+            </div>
+
+            <div class="input-group">
+              <input type="text" id="last-name" name="last_name" required placeholder=" ">
+              <label for="last-name">Last Name</label>
+            </div>
+
+            <div class="input-group">
+              <input type="email" id="email" name="user_email" required placeholder=" ">
+              <label for="email">Email</label>
+            </div>
+
+            <div class="input-group">
+              <input type="text" id="message" name="message" required placeholder=" ">
+              <label for="message">Your Message</label>
+            </div>
+
+            <div class="file-upload-group">
+              <span class="file-upload-label">Attachments (Optional)</span>
+              <div class="file-drop-zone">
+                <span class="file-info-text" id="drop-zone-prompt">Drag & drop or click to upload file</span>
+                <div class="file-name-display" id="file-name-display">No file chosen</div>
+                <input type="file" id="form-attachment" name="attachment" accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+              </div>
+            </div>
+            
+            <div class="form-action-row">
+              <button type="submit" class="curtain-btn" id="submit-btn">Submit</button>
+              <span class="status-msg" id="form-status-feedback"></span>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+        <div class="twocontact">
+            <p>You  can  also  Contact  Us  through</p>
+            <div class="social-icon-row">
+  
+  <a href="#" class="social-link-item" aria-label="Instagram">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+    </svg>
+  </a>
+
+  <a href="#" class="social-link-item" aria-label="Facebook">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+    </svg>
+  </a>
+
+  <a href="#" class="social-link-item" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 509 511.514"><path fill="#fff" d="M434.762 74.334C387.553 26.81 323.245 0 256.236 0h-.768C115.795.001 2.121 113.696 2.121 253.456l.001.015a253.516 253.516 0 0033.942 126.671L0 511.514l134.373-35.269a253.416 253.416 0 00121.052 30.9h.003.053C395.472 507.145 509 393.616 509 253.626c0-67.225-26.742-131.727-74.252-179.237l.014-.055zM255.555 464.453c-37.753 0-74.861-10.22-107.293-29.479l-7.72-4.602-79.741 20.889 21.207-77.726-4.984-7.975c-21.147-33.606-32.415-72.584-32.415-112.308 0-116.371 94.372-210.743 210.741-210.743 56.011 0 109.758 22.307 149.277 61.98a210.93 210.93 0 0161.744 149.095c0 116.44-94.403 210.869-210.844 210.869h.028zm115.583-157.914c-6.363-3.202-37.474-18.472-43.243-20.593-5.769-2.121-10.01-3.202-14.315 3.203-4.305 6.404-16.373 20.593-20.063 24.855-3.69 4.263-7.401 4.815-13.679 1.612-6.278-3.202-26.786-9.883-50.899-31.472a192.748 192.748 0 01-35.411-43.867c-3.712-6.363-.404-9.777 2.82-12.873 3.224-3.096 6.363-7.381 9.48-11.092a41.58 41.58 0 006.357-10.597 11.678 11.678 0 00-.508-11.09c-1.718-3.18-14.444-34.357-19.534-47.06-5.09-12.703-10.37-10.603-14.272-10.901-3.902-.297-7.911-.19-12.089-.19a23.322 23.322 0 00-16.964 7.911c-5.707 6.298-22.1 21.673-22.1 52.849s22.671 61.249 25.852 65.532c3.182 4.284 44.663 68.227 108.288 95.649 15.099 6.489 26.891 10.392 36.053 13.403a87.504 87.504 0 0025.216 3.718c4.905 0 9.82-.416 14.65-1.237 12.174-1.782 37.453-15.291 42.776-30.073s5.303-27.57 3.711-30.093c-1.591-2.524-5.704-4.369-12.088-7.615l-.038.021z"/></svg>
+     
+  </a>
+
+  <a href="#" class="social-link-item" aria-label="LinkedIn">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+      <rect x="2" y="9" width="4" height="12"></rect>
+      <circle cx="4" cy="4" r="2"></circle>
+    </svg>
+  </a>
+
+</div>
+
+        </div>
+        
+    </section>
+
+    <footer class="main-corporate-footer">
+  <div class="footer-grid-container">
+    
+    <div class="footer-column brand-column">
+      <div class="logo-white-block">
+        <img src="/images/tekmaxlogo.png" alt="TEK MAX Tools Logo" class="brand-logo-img">
+      </div>
+    </div>
+
+    <div class="footer-column links-column">
+      <h3 class="footer-column-heading">Navigation</h3>
+      <ul class="footer-links-list">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Ireland</a></li>
+        <li><a href="#">India</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column links-column">
+      <h3 class="footer-column-heading">Our Hubs</h3>
+      <ul class="footer-links-list">
+        <li><a href="#">Ireland</a></li>
+        <li><a href="#">Kerala, India</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column services-column">
+      <h3 class="footer-column-heading">Our Services</h3>
+      <ul class="footer-services-static-list">
+        <li>Precision Tooling & Industrial Mould Design</li>
+        <li>Automotive OEM Project Management</li>
+        <li>Engineering Support & Agricultural Solutions</li>
+        <li>Advanced Agricultural Engineering Solutions</li>
+      </ul>
+    </div>
+
+    <div class="footer-column social-column">
+      <h3 class="footer-column-heading">Follow us on</h3>
+      
+      <div class="social-icon-row">
+        
+        <a href="#" class="social-link-item" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+
+        <a href="#" class="social-link-item" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+        </a>
+
+        <a href="#" class="social-link-item" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 509 511.514"><path fill="#fff" d="M434.762 74.334C387.553 26.81 323.245 0 256.236 0h-.768C115.795.001 2.121 113.696 2.121 253.456l.001.015a253.516 253.516 0 0033.942 126.671L0 511.514l134.373-35.269a253.416 253.416 0 00121.052 30.9h.003.053C395.472 507.145 509 393.616 509 253.626c0-67.225-26.742-131.727-74.252-179.237l.014-.055zM255.555 464.453c-37.753 0-74.861-10.22-107.293-29.479l-7.72-4.602-79.741 20.889 21.207-77.726-4.984-7.975c-21.147-33.606-32.415-72.584-32.415-112.308 0-116.371 94.372-210.743 210.741-210.743 56.011 0 109.758 22.307 149.277 61.98a210.93 210.93 0 0161.744 149.095c0 116.44-94.403 210.869-210.844 210.869h.028zm115.583-157.914c-6.363-3.202-37.474-18.472-43.243-20.593-5.769-2.121-10.01-3.202-14.315 3.203-4.305 6.404-16.373 20.593-20.063 24.855-3.69 4.263-7.401 4.815-13.679 1.612-6.278-3.202-26.786-9.883-50.899-31.472a192.748 192.748 0 01-35.411-43.867c-3.712-6.363-.404-9.777 2.82-12.873 3.224-3.096 6.363-7.381 9.48-11.092a41.58 41.58 0 006.357-10.597 11.678 11.678 0 00-.508-11.09c-1.718-3.18-14.444-34.357-19.534-47.06-5.09-12.703-10.37-10.603-14.272-10.901-3.902-.297-7.911-.19-12.089-.19a23.322 23.322 0 00-16.964 7.911c-5.707 6.298-22.1 21.673-22.1 52.849s22.671 61.249 25.852 65.532c3.182 4.284 44.663 68.227 108.288 95.649 15.099 6.489 26.891 10.392 36.053 13.403a87.504 87.504 0 0025.216 3.718c4.905 0 9.82-.416 14.65-1.237 12.174-1.782 37.453-15.291 42.776-30.073s5.303-27.57 3.711-30.093c-1.591-2.524-5.704-4.369-12.088-7.615l-.038.021z"/></svg>
+     
+  </a>
+        <a href="#" class="social-link-item" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="finalp">
+    <p>@ 2026 TekMax Tools.All Rights Reserved</p>
+  </div>
+</footer>
+
+<nav class="pill-navbar">
+    <a id="nav-home" href="/index.html" class="nav-link ">Home</a>
+    <a id="nav-about" href="/pages/aboutus.html" class="nav-link">About Us</a>
+    <a id="nav-india" href="/pages/services.html" class="nav-link">Our Services</a>
+    <a id="nav-ireland" href="/pages/ireland.html" class="nav-link">Ireland</a>
+    <a id="nav-china" href="/pages/india.html" class="nav-link">India</a>
+    <a id="nav-contact" href="/pages/contactus.html" class="nav-link">Contact Us</a>
+  </nav>
+
+
+    <script>
+        const fileInput = document.getElementById('form-attachment');
+        const fileNameDisplay = document.getElementById('file-name-display');
+        const dropZonePrompt = document.getElementById('drop-zone-prompt');
+        const contactForm = document.getElementById('contact-form-element');
+        const submitBtn = document.getElementById('submit-btn');
+        const statusFeedback = document.getElementById('form-status-feedback');
+        
+        let base64FileString = "";
+        let uploadedFileName = "";
+
+        // UI Event: Handle reactive label states for file attachments selection
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                // Keep file within limits for stable Base64 transmission
+                if (file.size > 200 * 1024) { 
+                    alert("To ensure reliable processing, attachments should be under 200KB.");
+                    fileInput.value = "";
+                    return;
+                }
+
+                uploadedFileName = file.name;
+                fileNameDisplay.textContent = `Selected: ${file.name}`;
+                fileNameDisplay.style.display = 'block';
+                dropZonePrompt.textContent = "Change selected file:";
+
+                // Use FileReader to translate raw attachment arrays into a Base64 string
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    base64FileString = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                resetFileInputElement();
+            }
+        });
+
+        function resetFileInputElement() {
+            base64FileString = "";
+            uploadedFileName = "";
+            fileNameDisplay.style.display = 'none';
+            dropZonePrompt.textContent = "Drag & drop or click to upload file";
+        }
+
+        // EmailJS Submission Execution Engine
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Sending...";
+            statusFeedback.style.color = "#1c638d";
+            statusFeedback.textContent = "Establishing connection...";
+
+            // Match parameters precisely with your configuration keys inside the EmailJS Template dashboard
+            const templateParams = {
+                first_name: document.getElementById('first-name').value,
+                last_name: document.getElementById('last-name').value,
+                user_email: document.getElementById('email').value,
+                message: document.getElementById('message').value,
+                attachment_data: base64FileString, // Contains encoded data URL
+                attachment_name: uploadedFileName  // Passes string identifier to email body
+            };
+
+            // Replace with your actual EmailJS Service ID and Template ID values
+            emailjs.send('service_ogsj1vd', 'template_iwxhj21', templateParams)
+                .then(() => {
+                    statusFeedback.style.color = "#15803d";
+                    statusFeedback.textContent = "Message transmitted successfully.";
+                    contactForm.reset();
+                    resetFileInputElement();
+                })
+                .catch((error) => {
+                    console.error("EmailJS Error details:", error);
+                    statusFeedback.style.color = "#b91c1c";
+                    statusFeedback.textContent = "Transmission failed. Verify keys.";
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Submit";
+                });
+        });
+
+
+          document.addEventListener("DOMContentLoaded", function () {
+    // 1. Find out the name of the file the browser is looking at right now
+    const currentPath = window.location.pathname;
+
+    // 2. Grab all the navigation buttons
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    // 3. Remove any accidental highlight first
+    navLinks.forEach(link => link.classList.remove("active"));
+
+    // 4. Match the current page path with the button target path
+    let matched = false;
+    navLinks.forEach(link => {
+      const linkHref = link.getAttribute("href");
+      
+      // Check if the current URL path contains the file name of the button link
+      if (linkHref && currentPath.includes(linkHref) && linkHref !== "index.html" && !linkHref.startsWith("#")) {
+        link.classList.add("active");
+        matched = true;
+      }
+    });
+
+    // 5. Default Safeguard: If we are on the home page or index.html, highlight 'Home'
+    if (!matched) {
+      const homeLink = document.getElementById("nav-home");
+      if (homeLink) {
+        homeLink.classList.add("active");
+      }
+    }
+  });
+    </script>
+</body>
+</html>
