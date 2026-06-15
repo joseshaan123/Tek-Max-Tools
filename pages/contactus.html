@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="icon" type="image/png" href="/images/icontekmax.png">
     <title>Contact Us | Executive Portal</title>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
@@ -53,6 +54,55 @@
     color: #FFFFFF;
     padding: 8px 24px;
   }
+      /* ==========================================================================
+   HERO CONTAINER CONFIGURATION & EMBEDDED TOP RIGHT LOGO
+   ========================================================================== */
+.hero-section {
+  position: relative; /* CRITICAL: Acts as the anchor point for the absolute logo placement */
+  /* Keep your existing hero layout rules here (e.g., width, height, display) */
+}
+
+.section-embedded-header {
+  position: absolute;
+  top: 20px;        /* Distance from the very top of the hero section */
+  right: 40px;      /* Distance from the very right edge of the page window */
+  z-index: 100;     /* Keeps the logo safely layered above the sliding filmstrip images */
+}
+
+/* White background card wrapper for the brand identity */
+.header-logo-container {
+
+  width: 180px;
+  height: auto;
+
+ 
+ 
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.header-logo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Elegant micro-hover interactives */
+.header-logo-container:hover {
+  transform: translateY(-3px);
+ 
+}
+
+/* Responsive constraints for screens like phones or small viewports */
+@media (max-width: 600px) {
+  .section-embedded-header {
+    top: 20px;
+    right: 20px;
+  }
+  .header-logo-container {
+    width: 120px;
+    padding: 8px 10px;
+  }
+}
         
         h1 {
             margin: 0;
@@ -281,6 +331,10 @@
         @media (max-width: 850px) {
             .connect-container {
                 grid-template-columns: 1fr;
+                margin: 40px;
+                
+                max-width: 800px;
+                
             }
             .connect-image-panel {
                 height: 250px;
@@ -288,10 +342,26 @@
             }
             .connect-form-side {
                 padding: 40px 30px;
+                
             }
             .form-section-title {
                 font-size: 2.2rem;
             }
+
+             .connect-section {
+            position: relative;
+            
+            background-size: 600% 600%;
+            animation: executiveLiveWave 16s ease infinite;
+            padding: 0px;
+            margin: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
         }
 
 
@@ -477,7 +547,7 @@
 
 @media (max-width: 600px) {
   .main-corporate-footer {
-    padding: 40px 20px;
+    padding: 40px 40px;
   }
   .footer-grid-container {
     grid-template-columns: 1fr;
@@ -492,6 +562,14 @@
 <body>
 
     <section class="macro-section connect-section" id="section-connect">
+       <header class="section-embedded-header">
+      <a href="/" class="header-logo-link" aria-label="Go to Homepage">
+        <div class="header-logo-container">
+          <img src="/images/tekmaxlogo.png" alt="TEK MAX Tools Logo" class="header-logo-img">
+        </div>
+      </a>
+    </header>
+
       
       <h2 class="form-section-title">Contact Us</h2>
       

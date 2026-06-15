@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TEK MAX Tools - Landing Page</title>
+  <title>TEK MAX Tools</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   
   <style>
@@ -124,7 +125,7 @@
       display: flex;
       align-items: flex-start;
       height: 60px;
-      font-size: 34px;
+      font-size: clamp(1.5rem,3vw,2rem);
       font-weight: 700;
       overflow: hidden;
       margin-bottom: 60px;
@@ -134,6 +135,7 @@
       color: #236B8E;
       margin-right: 12px;
       white-space: nowrap;
+      
     }
 
     .moving-text-stack {
@@ -143,6 +145,9 @@
       margin-top: 5px;
       transform: translateY(0px);
       transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1);
+         white-space: normal;       /* allows wrapping */
+  overflow-wrap: break-word; /* breaks long words */
+  word-break: break-word;    /* fallback */
     }
 
     .moving-phrase {
@@ -203,9 +208,10 @@
        ========================================================================== */
     .about-section {
       width: 100%;
-      height: 100vh;
+      height: fit-content;
       display: flex;
-      position: relative;
+      flex-direction: row;
+      gap: 0;
       overflow: hidden;
       background-color: #FFFFFF;
     }
@@ -220,17 +226,20 @@
     }
 
     .reveal-heading {
-      font-size: 46px;
+      font-size: clamp(0.8rem,3vw,3rem);
       font-weight: 600;
       color: #236B8E;
+      margin-top: 20px;
       margin-bottom: 24px;
+      width: 100%;
+      z-index: 2;
       opacity: 0;
       transform: translateY(40px);
       transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
     .reveal-body {
-      font-size: 16px;
+      font-size: clamp(0.5rem,2vw,1rem);
       line-height: 1.6;
       color: #4A5568;
       margin-bottom: 16px;
@@ -243,6 +252,7 @@
       opacity: 1;
       transform: translateY(0);
       transition-delay: 0.1s;
+    
     }
 
     .about-section.animate-in .reveal-body-1 {
@@ -255,6 +265,7 @@
       opacity: 1;
       transform: translateY(0);
       transition-delay: 0.5s;
+    
     }
 
     .video-column {
@@ -283,6 +294,8 @@
       align-items: center;
       overflow: hidden;
       border-top: 1px solid #F0F4F8;
+      margin-top: 40px;
+      gap: 40px;
     }
 
     .partners-title {
@@ -293,6 +306,7 @@
       margin-bottom: 50px;
       text-align: center;
       letter-spacing: -0.5px;
+      margin-bottom: 50px;
     }
 
     .carousel-container {
@@ -367,6 +381,7 @@
       flex-direction: column;
       align-items: center;
       border-top: 1px solid #F0F4F8;
+      
     }
 
     .why-main-heading {
@@ -404,6 +419,7 @@
       height: 100%;
       transform: translateX(0%);
       transition: transform 0.8s cubic-bezier(0.85, 0, 0.15, 1);
+      
     }
 
     /* Individual sliding component frame */
@@ -412,6 +428,8 @@
       height: 100%;
       position: relative;
       flex-shrink: 0;
+      display: flex;
+      
     }
 
     /* Background image wrapper layout with specific overlay asset filter */
@@ -873,6 +891,484 @@
       color: #123C52;
       text-decoration: underline;
     }
+
+    /* Hide icon by default, show on mobile */
+.menu-icon { display: none; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 10000; cursor: pointer; background: #236B8E; padding: 15px; border-radius: 50%; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+.menu-icon span { display: block; width: 25px; height: 3px; background: white; margin: 5px 0; }
+
+@media (max-width: 720px) {
+    .menu-icon { display: block; }
+    .pill-navbar { 
+        display: none; /* Hidden by default on mobile */
+        bottom: 100px; /* Positioned above the icon */
+        flex-direction: column; 
+        padding: 20px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .pill-navbar.active {
+        display: flex;
+        opacity: 1;
+        background-color: #236B8E;
+        animation: slideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+}
+
+@keyframes slideUp {
+    from { transform: translate(-50%, 20px); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+
+.main-corporate-footer {
+  background-color: #1c638d;
+  /* Changed padding: removed the bottom 20px padding so the text can truly touch the edge */
+  padding: 40px 0px 0px 0px; 
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #ffffff;
+  
+  /* FORCE FOOTER TO BE A VERTICAL FLEXBOX */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 350px; /* Gives the footer enough body depth to push down against */
+}
+
+/* Master alignment container utilizing modern CSS Grid */
+.footer-grid-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  display: grid;
+  /* Balanced layout distribution split across five functional spaces */
+  grid-template-columns: 2.5fr 1.5fr 1.5fr 3.5fr 2fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+   align-items: center;
+}
+
+/* Base Headings Layout Formatting */
+.footer-column-heading {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+/* Logo container matching white background layout bounding box */
+.logo-white-block {
+ 
+ 
+  display: flex;
+ width: 300px;
+  height: 200px;
+  align-items: center;
+
+}
+
+.brand-logo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Lists and Links Reset Mechanics */
+.footer-links-list, 
+.footer-services-static-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Interactive Navigation Link Items styling */
+.footer-links-list a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.15rem;
+  font-weight: 400;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+  text-align: center;
+}
+
+.footer-links-list a:hover {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+/* Service Registry Column Styling */
+.footer-services-static-list li {
+  font-size: 1.05rem;
+  line-height: 1.45;
+  font-weight: 300;
+  opacity: 0.9;
+  text-align: center;
+}
+
+/* Horizontal Social Media Layout Block */
+.social-icon-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 5px;
+}
+
+.social-link-item {
+  color: #ffffff;
+  display: inline-block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0.9;
+}
+
+.social-link-item svg {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
+.social-link-item:hover {
+  transform: translateY(-3px);
+  opacity: 1;
+}
+.finalp{
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centered cleanly inside its baseline box */
+  font-size: 1.3rem;
+  text-align: center;
+  margin-bottom: 0;
+  height: 60px; /* Slightly tightened height for a cleaner corporate layout */
+  
+  /* THE MAGIC KEY: Pushes the element cleanly to the absolute bottom of the footer container */
+  margin-top: auto; 
+  
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.15); /* Optional: dynamic micro-shading band across the absolute bottom edge */
+}
+/* Responsive Adaptive Viewport Adjustments */
+@media (max-width: 1024px) {
+  .footer-grid-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 20px;
+  }
+  .brand-column {
+    grid-column: span 2;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-corporate-footer {
+    padding: 40px 20px;
+  }
+  .footer-grid-container {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+  .brand-column {
+    grid-column: span 1;
+  }
+}
+
+@media(max-width:1024px){
+  .reveal-heading {
+      font-size: clamp(1.5rem,3vw,3rem);
+      font-weight: 600;
+      color: #236B8E;
+      margin-top: 20px;
+      margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+   .reveal-body {
+      font-size: clamp(0.5rem,2vw,1rem);
+      line-height: 1.6;
+      color: #4A5568;
+      margin-bottom: 16px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .about-section.animate-in .reveal-heading {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.1s;
+   
+    }
+
+    .about-section.animate-in .reveal-body-1 {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.3s;
+    }
+
+    .about-section.animate-in .reveal-body-2 {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.5s;
+    
+    }
+
+    
+     .text-column {
+      width:50%;
+      height: max-content;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: start;
+      gap: 0;
+     font-size: clamp(0.8rem,2vw,1.5rem);
+      padding: 30px;
+    }
+
+}
+@media(max-width:900px){
+    .cards-grid-container {
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
+      margin: 50px;
+    }
+
+      
+
+     .text-column {
+      width:50%;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      
+      gap: 0;
+      padding: 30px;
+      padding-top: 0;
+    }
+
+
+     .reveal-heading {
+      font-size: clamp(2rem,3vw,3rem);
+      font-weight: 600;
+      color: #236B8E;
+      margin-top: 20px;
+      margin-bottom: 24px;
+      width: 100%;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .reveal-body {
+      font-size: clamp(rem,2vw,2rem);
+      line-height: 1.6;
+      color: #4A5568;
+      margin-bottom: 16px;
+      margin-top: 0;
+      opacity: 0;
+      height: max-content;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+}
+
+@media(max-width:720px){
+  .cards-grid-container {
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
+     
+    }
+
+
+    .hero-section {
+  position: relative;
+  display: flex;
+  flex-direction: column; /* CRITICAL: Acts as the anchor point for the absolute logo placement */
+  /* Keep your existing hero layout rules here (e.g., width, height, display) */
+}
+
+.header-logo-container {
+
+  width: 180px;
+  height: auto;
+
+ 
+ 
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.section-embedded-header {
+position: relative;
+top: 0;
+  right: 0px;   
+
+ display: flex;
+ justify-content: center;
+ background-color: white;
+ width: 100%;     /* Distance from the very right edge of the page window */
+  z-index: 100;     /* Keeps the logo safely layered above the sliding filmstrip images */
+}
+
+
+.content-side {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 40px;
+      position: relative;
+      background-color: #FFFFFF;
+    }
+
+
+ .slider-window {
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+     .text-column {
+      width:100%;
+      height: max-content;
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: start;
+      gap: 0;
+      padding: 30px;
+      font-size: clamp(2rem,3vw,3rem);
+    }
+
+    .video-column {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+   .reveal-body {
+      font-size: clamp(1rem,2vw,2rem);
+      line-height: 1.6;
+      color: #4A5568;
+      margin-bottom: 16px;
+      margin-top: 0;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+     .reveal-heading {
+      font-size: clamp(2rem,3vw,3rem);
+      font-weight: 600;
+      color: #236B8E;
+      margin-top: 20px;
+      margin-bottom: 24px;
+      width: 100%;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+     .about-section{
+      display: flex;
+      flex-direction: column;
+    }
+
+
+}
+
+    
+
+    
+@media(max-width:540px){
+   .cards-grid-container {
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 32px;
+     
+    }
+
+    .about-section{
+      display: flex;
+      flex-direction: column;
+    }
+    .text-column {
+      width:100%;
+    height: max-content;
+      display: flex;
+      flex-direction: column;
+      font-size: clamp(1rem,2vw,1.5rem);
+      justify-content: start;
+      align-items: start;
+      gap: 0;
+      padding: 30px;
+    }
+    .reveal-body {
+      font-size: clamp(1rem,2vw,2rem);
+      line-height: 1.6;
+      color: #4A5568;
+      margin-bottom: 16px;
+      margin-top: 0;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+     .reveal-heading {
+      font-size: clamp(2rem,3vw,3rem);
+      font-weight: 600;
+      color: #236B8E;
+      margin-top: 20px;
+      margin-bottom: 24px;
+      width: 100%;
+      z-index: 2;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+
+    .video-column {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+}
+  
   </style>
 </head>
 <body>
@@ -1122,7 +1618,89 @@
 
     </div>
   </section>
-<nav class="pill-navbar">
+
+  
+    <footer class="main-corporate-footer">
+  <div class="footer-grid-container">
+    
+    <div class="footer-column brand-column">
+      <div class="logo-white-block">
+        <img src="/images/tekmaxlogo.png" alt="TEK MAX Tools Logo" class="brand-logo-img">
+      </div>
+    </div>
+
+    <div class="footer-column links-column">
+      <h3 class="footer-column-heading">Navigation</h3>
+      <ul class="footer-links-list">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Ireland</a></li>
+        <li><a href="#">India</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column links-column">
+      <h3 class="footer-column-heading">Our Hubs</h3>
+      <ul class="footer-links-list">
+        <li><a href="#">Ireland</a></li>
+        <li><a href="#">Kerala, India</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column services-column">
+      <h3 class="footer-column-heading">Our Services</h3>
+      <ul class="footer-services-static-list">
+        <li>Precision Tooling & Industrial Mould Design</li>
+        <li>Automotive OEM Project Management</li>
+        <li>Engineering Support & Agricultural Solutions</li>
+        <li>Advanced Agricultural Engineering Solutions</li>
+      </ul>
+    </div>
+
+    <div class="footer-column social-column">
+      <h3 class="footer-column-heading">Follow us on</h3>
+      
+      <div class="social-icon-row">
+        
+        <a href="#" class="social-link-item" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+
+        <a href="#" class="social-link-item" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+        </a>
+
+        <a href="#" class="social-link-item" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 509 511.514"><path fill="#fff" d="M434.762 74.334C387.553 26.81 323.245 0 256.236 0h-.768C115.795.001 2.121 113.696 2.121 253.456l.001.015a253.516 253.516 0 0033.942 126.671L0 511.514l134.373-35.269a253.416 253.416 0 00121.052 30.9h.003.053C395.472 507.145 509 393.616 509 253.626c0-67.225-26.742-131.727-74.252-179.237l.014-.055zM255.555 464.453c-37.753 0-74.861-10.22-107.293-29.479l-7.72-4.602-79.741 20.889 21.207-77.726-4.984-7.975c-21.147-33.606-32.415-72.584-32.415-112.308 0-116.371 94.372-210.743 210.741-210.743 56.011 0 109.758 22.307 149.277 61.98a210.93 210.93 0 0161.744 149.095c0 116.44-94.403 210.869-210.844 210.869h.028zm115.583-157.914c-6.363-3.202-37.474-18.472-43.243-20.593-5.769-2.121-10.01-3.202-14.315 3.203-4.305 6.404-16.373 20.593-20.063 24.855-3.69 4.263-7.401 4.815-13.679 1.612-6.278-3.202-26.786-9.883-50.899-31.472a192.748 192.748 0 01-35.411-43.867c-3.712-6.363-.404-9.777 2.82-12.873 3.224-3.096 6.363-7.381 9.48-11.092a41.58 41.58 0 006.357-10.597 11.678 11.678 0 00-.508-11.09c-1.718-3.18-14.444-34.357-19.534-47.06-5.09-12.703-10.37-10.603-14.272-10.901-3.902-.297-7.911-.19-12.089-.19a23.322 23.322 0 00-16.964 7.911c-5.707 6.298-22.1 21.673-22.1 52.849s22.671 61.249 25.852 65.532c3.182 4.284 44.663 68.227 108.288 95.649 15.099 6.489 26.891 10.392 36.053 13.403a87.504 87.504 0 0025.216 3.718c4.905 0 9.82-.416 14.65-1.237 12.174-1.782 37.453-15.291 42.776-30.073s5.303-27.57 3.711-30.093c-1.591-2.524-5.704-4.369-12.088-7.615l-.038.021z"/></svg>
+     
+  </a>
+        <a href="#" class="social-link-item" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="finalp">
+    <p>@ 2026 TekMax Tools.All Rights Reserved</p>
+  </div>
+</footer>
+  <div class="menu-icon" id="menu-icon">
+    <span></span><span></span><span></span>
+</div>
+<nav class="pill-navbar" id="nav-panel">
     <a id="nav-home" href="/index.html" class="nav-link ">Home</a>
     <a id="nav-about" href="/pages/aboutus.html" class="nav-link">About Us</a>
     <a id="nav-india" href="/pages/services.html" class="nav-link">Our Services</a>
@@ -1266,6 +1844,15 @@
       }
     }
   });
+
+
+
+    const menuIcon = document.getElementById('menu-icon');
+    const navPanel = document.getElementById('nav-panel');
+
+    menuIcon.addEventListener('click', () => {
+        navPanel.classList.toggle('active');
+    });
 
 
 
