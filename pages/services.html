@@ -14,6 +14,7 @@ body {
     font-family: 'Segoe UI', sans-serif;
     background: #f5f7f9;
     color: #333;
+    box-sizing: border-box;
    
 }
 
@@ -24,7 +25,7 @@ body {
 h1 {
     text-align: center;
     font-size: 42px;
-    margin-top: 40px;
+    margin-top: 20px;
     font-weight: 400;
     color: #2f6f8f;
     text-shadow: 0 2px 4px rgba(0,0,0,0.15);
@@ -34,8 +35,8 @@ h1 {
 .section {
      width: 100%;
     
-     padding: 20px;
-     margin: 20pcx;
+    
+     
      margin-bottom: 60px;
      
 }
@@ -45,20 +46,20 @@ h1 {
     color: #1e4f66;
     text-shadow: 0 2px 3px rgba(0,0,0,0.1);
     font-family: "Mont";
+    margin-left: 20px;
 }
-    /* ==========================================================================
-   HERO CONTAINER CONFIGURATION & EMBEDDED TOP RIGHT LOGO
-   ========================================================================== */
-.hero-section {
-  position: relative; /* CRITICAL: Acts as the anchor point for the absolute logo placement */
-  /* Keep your existing hero layout rules here (e.g., width, height, display) */
-}
+   
+
 
 .section-embedded-header {
-  position: absolute;
-  top: 20px;        /* Distance from the very top of the hero section */
-  right: 40px;      /* Distance from the very right edge of the page window */
-  z-index: 100;     /* Keeps the logo safely layered above the sliding filmstrip images */
+   position:relative;
+   width: 100%;
+   display: flex;
+   justify-content: flex-end;
+   padding-right: 0px;
+  top: 0px;        /* Distance from the very top of the hero section */
+  right: 0px;      /* Distance from the very right edge of the page window */
+  z-index: 100;      /* Keeps the logo safely layered above the sliding filmstrip images */
 }
 
 /* White background card wrapper for the brand identity */
@@ -67,7 +68,7 @@ h1 {
   width: 180px;
   height: auto;
 
- 
+  padding-right: 40px;
  
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -101,11 +102,9 @@ h1 {
 .accordion {
     display: flex;
     flex-direction: column;
-    min-width: 300px;
-    max-width: 900px;
-    justify-content: center;
+   margin-left: 50px;
    justify-self: center;
-    margin: 20px;
+  margin-right: 50px;
     
    
 }
@@ -117,9 +116,7 @@ h1 {
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
     transition: 0.3s;
     max-width: 900px;
-    min-width: 900px;
-    
-     
+    min-width: 300px;
 }
 
 .accordion-header {
@@ -245,6 +242,18 @@ h1 {
 
     display: block;
 }
+
+@media(max-width:1024px){
+    .section-embedded-header {
+  position: absolute;
+  top: 20px;        /* Distance from the very top of the hero section */
+  right: 10px;      /* Distance from the very right edge of the page window */
+  z-index: 100;     /* Keeps the logo safely layered above the sliding filmstrip images */
+}
+}
+
+
+
 
 </style>
 </head>
