@@ -33,8 +33,9 @@ h1 {
 
 .section {
      width: 100%;
-     box-sizing: border-box; /* Fixes the overflow */
+    
      padding: 20px;
+     margin: 20pcx;
      margin-bottom: 60px;
      
 }
@@ -93,16 +94,18 @@ h1 {
     width: 120px;
     padding: 8px 10px;
   }
+
 }
 
 /* ===== ACCORDION ===== */
 .accordion {
     display: flex;
     flex-direction: column;
+    min-width: 300px;
     max-width: 900px;
-    width: 900px;
     justify-content: center;
-    justify-self: center;
+   justify-self: center;
+    margin: 20px;
     
    
 }
@@ -114,7 +117,8 @@ h1 {
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
     transition: 0.3s;
     max-width: 900px;
-    width: 900px;
+    min-width: 900px;
+    
      
 }
 

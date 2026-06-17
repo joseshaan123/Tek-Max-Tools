@@ -95,13 +95,54 @@
 /* Responsive constraints for screens like phones or small viewports */
 @media (max-width: 600px) {
   .section-embedded-header {
-    top: 20px;
-    right: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    
+    top: 0px;
+    right: 0px;
   }
   .header-logo-container {
     width: 120px;
     padding: 8px 10px;
   }
+
+   .connect-container {
+                grid-template-columns: 1fr;
+                margin-top: 20px;
+                
+                max-width: 800px;
+                
+            }
+
+
+            .form-section-title {
+            font-size: 3rem;
+            font-weight: 400;
+            color: #ffffff;
+            margin-bottom: 40px;
+            margin-top: 10px;
+            letter-spacing: 0.02em;
+        }
+
+
+        .header-logo-link{
+          width:300px;
+
+        }
+
+        .header-logo-container {
+margin-top: 20px;
+  width: 100%;
+  height: auto;
+  padding: 0;
+
+ 
+ 
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
 }
         
         h1 {
@@ -363,8 +404,49 @@
             box-sizing: border-box;
         }
         }
+        @media(max-width:540px){
+             .connect-section {
+            position: relative;
+            
+            background-size: 600% 600%;
+            animation: executiveLiveWave 16s ease infinite;
+            padding: 0px;
+            margin: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
 
 
+
+        .logo-white-block {
+ 
+ 
+  display: flex;
+ width: 300px;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.footer-grid-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  display: grid;
+  /* Balanced layout distribution split across five functional spaces */
+  grid-template-columns: 2.5fr 1.5fr 1.5fr 3.5fr 2fr;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+
+}
+
+
+        }
     
 
         /* Horizontal SVG Alignment Matrix */
@@ -401,7 +483,7 @@
 .main-corporate-footer {
   background-color: #1c638d;
   /* Changed padding: removed the bottom 20px padding so the text can truly touch the edge */
-  padding: 40px 0px 0px 0px; 
+  padding: 20px; 
   width: 100%;
   box-sizing: border-box;
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -423,6 +505,7 @@
   grid-template-columns: 2.5fr 1.5fr 1.5fr 3.5fr 2fr;
   gap: 40px;
   align-items: flex-start;
+
 }
 
 .footer-column {
@@ -438,6 +521,7 @@
   margin: 0 0 20px 0;
   letter-spacing: 0.01em;
   white-space: nowrap;
+  text-align: center;
 }
 
 /* Logo container matching white background layout bounding box */
@@ -448,6 +532,7 @@
  width: 300px;
   height: 200px;
   align-items: center;
+  justify-self: center;
 
 }
 
@@ -455,6 +540,7 @@
   width: 100%;
   height: auto;
   display: block;
+  justify-self: center;
 }
 
 /* Lists and Links Reset Mechanics */
@@ -465,6 +551,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 12px;
 }
 
@@ -557,18 +644,123 @@
     grid-column: span 1;
   }
 }
+
+
+
+
+/* --- Hamburger Icon --- */
+.menu-icon { 
+    display: none; 
+    position: fixed; 
+    bottom: 30px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    z-index: 10000; 
+    cursor: pointer; 
+    background: #236B8E; 
+    padding: 15px; 
+    border-radius: 50%; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
+}
+.menu-icon span { display: block; width: 25px; height: 3px; background: white; margin: 5px 0; }
+
+/* --- Navbar --- */
+.pill-navbar {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FFFFFF;
+    border: 4px solid #236B8E;
+    padding: 8px 15px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    z-index: 9999;
+}
+
+.nav-link {
+    color: #236B8E !important; /* Forces blue text */
+    background: transparent !important; /* Removes accidental blue backgrounds */
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+
+ .nav-link {
+    color: #236B8E;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .nav-link.active {
+    background-color: #236B8E;
+    color: #FFFFFF;
+    padding: 8px 24px;
+  }
+/* Mobile Responsiveness */
+@media (max-width: 720px) {
+    .menu-icon { display: block; }
+    .pill-navbar { 
+        display: none; 
+        bottom: 100px; 
+        flex-direction: column; 
+        border-radius: 20px;
+        width: 200px;
+        padding: 15px;
+    }
+    .pill-navbar.active {
+        display: flex;
+        animation: slideUp 0.3s ease-out;
+    }
+}
+
+@keyframes slideUp {
+    from { transform: translate(-50%, 40px); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+
+
+/* Active State Styling */
+.nav-link.active {
+    background-color: #236B8E !important;
+    color: #FFFFFF !important;
+    padding: 8px 24px; /* Maintain consistent pill shape */
+}
+
+/* Ensure mobile links look correct when active inside the column */
+@media (max-width: 720px) {
+    .pill-navbar.active .nav-link.active {
+        width: 100%;
+        text-align: center;
+        border-radius: 10px;
+    }
+}
     </style>
 </head>
 <body>
 
-    <section class="macro-section connect-section" id="section-connect">
-       <header class="section-embedded-header">
+      <header class="section-embedded-header">
       <a href="/" class="header-logo-link" aria-label="Go to Homepage">
         <div class="header-logo-container">
           <img src="/images/tekmaxlogo.png" alt="TEK MAX Tools Logo" class="header-logo-img">
         </div>
       </a>
     </header>
+
+    <section class="macro-section connect-section" id="section-connect">
+   
 
       
       <h2 class="form-section-title">Contact Us</h2>
@@ -737,131 +929,119 @@
     <p>@ 2026 TekMax Tools.All Rights Reserved</p>
   </div>
 </footer>
+ <!-- Hamburger Icon -->
+<div class="menu-icon" id="menu-icon">
+    <span></span><span></span><span></span>
+</div>
 
-<nav class="pill-navbar">
-    <a id="nav-home" href="/index.html" class="nav-link ">Home</a>
-    <a id="nav-about" href="/pages/aboutus.html" class="nav-link">About Us</a>
-    <a id="nav-india" href="/pages/services.html" class="nav-link">Our Services</a>
-    <a id="nav-ireland" href="/pages/ireland.html" class="nav-link">Ireland</a>
-    <a id="nav-china" href="/pages/india.html" class="nav-link">India</a>
-    <a id="nav-contact" href="/pages/contactus.html" class="nav-link">Contact Us</a>
-  </nav>
+<!-- The Navigation Panel -->
+<nav class="pill-navbar" id="nav-panel">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/pages/aboutus.html" class="nav-link">About Us</a>
+    <a href="/pages/services.html" class="nav-link">Our Services</a>
+    <a href="/pages/ireland.html" class="nav-link">Ireland</a>
+    <a href="/pages/india.html" class="nav-link">India</a>
+    <a href="/pages/contactus.html" id="nav-contact" class="nav-link">Contact Us</a>
+</nav>
 
 
     <script>
-        const fileInput = document.getElementById('form-attachment');
-        const fileNameDisplay = document.getElementById('file-name-display');
-        const dropZonePrompt = document.getElementById('drop-zone-prompt');
-        const contactForm = document.getElementById('contact-form-element');
-        const submitBtn = document.getElementById('submit-btn');
-        const statusFeedback = document.getElementById('form-status-feedback');
-        
-        let base64FileString = "";
-        let uploadedFileName = "";
-
-        // UI Event: Handle reactive label states for file attachments selection
-        fileInput.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                // Keep file within limits for stable Base64 transmission
-                if (file.size > 200 * 1024) { 
-                    alert("To ensure reliable processing, attachments should be under 200KB.");
-                    fileInput.value = "";
-                    return;
-                }
-
-                uploadedFileName = file.name;
-                fileNameDisplay.textContent = `Selected: ${file.name}`;
-                fileNameDisplay.style.display = 'block';
-                dropZonePrompt.textContent = "Change selected file:";
-
-                // Use FileReader to translate raw attachment arrays into a Base64 string
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    base64FileString = event.target.result;
-                };
-                reader.readAsDataURL(file);
-            } else {
-                resetFileInputElement();
-            }
-        });
-
-        function resetFileInputElement() {
-            base64FileString = "";
-            uploadedFileName = "";
-            fileNameDisplay.style.display = 'none';
-            dropZonePrompt.textContent = "Drag & drop or click to upload file";
-        }
-
-        // EmailJS Submission Execution Engine
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            submitBtn.disabled = true;
-            submitBtn.textContent = "Sending...";
-            statusFeedback.style.color = "#1c638d";
-            statusFeedback.textContent = "Establishing connection...";
-
-            // Match parameters precisely with your configuration keys inside the EmailJS Template dashboard
-            const templateParams = {
-                first_name: document.getElementById('first-name').value,
-                last_name: document.getElementById('last-name').value,
-                user_email: document.getElementById('email').value,
-                message: document.getElementById('message').value,
-                attachment_data: base64FileString, // Contains encoded data URL
-                attachment_name: uploadedFileName  // Passes string identifier to email body
-            };
-
-            // Replace with your actual EmailJS Service ID and Template ID values
-            emailjs.send('service_ogsj1vd', 'template_iwxhj21', templateParams)
-                .then(() => {
-                    statusFeedback.style.color = "#15803d";
-                    statusFeedback.textContent = "Message transmitted successfully.";
-                    contactForm.reset();
-                    resetFileInputElement();
-                })
-                .catch((error) => {
-                    console.error("EmailJS Error details:", error);
-                    statusFeedback.style.color = "#b91c1c";
-                    statusFeedback.textContent = "Transmission failed. Verify keys.";
-                })
-                .finally(() => {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = "Submit";
-                });
-        });
-
-
-          document.addEventListener("DOMContentLoaded", function () {
-    // 1. Find out the name of the file the browser is looking at right now
+  
+document.addEventListener("DOMContentLoaded", function () {
+    // --- 1. NAVIGATION HIGHLIGHT LOGIC ---
     const currentPath = window.location.pathname;
-
-    // 2. Grab all the navigation buttons
     const navLinks = document.querySelectorAll(".nav-link");
 
-    // 3. Remove any accidental highlight first
-    navLinks.forEach(link => link.classList.remove("active"));
-
-    // 4. Match the current page path with the button target path
-    let matched = false;
     navLinks.forEach(link => {
-      const linkHref = link.getAttribute("href");
-      
-      // Check if the current URL path contains the file name of the button link
-      if (linkHref && currentPath.includes(linkHref) && linkHref !== "index.html" && !linkHref.startsWith("#")) {
-        link.classList.add("active");
-        matched = true;
-      }
+        link.classList.remove("active");
+        const linkHref = link.getAttribute("href");
+        
+        // Match logic: If current path ends with the href (or is home)
+        if (linkHref && (currentPath.endsWith(linkHref) || (currentPath === "/" && linkHref === "/index.html"))) {
+            link.classList.add("active");
+        }
     });
 
-    // 5. Default Safeguard: If we are on the home page or index.html, highlight 'Home'
-    if (!matched) {
-      const homeLink = document.getElementById("nav-home");
-      if (homeLink) {
-        homeLink.classList.add("active");
-      }
+    // --- 2. MOBILE MENU TOGGLE LOGIC ---
+    const menuIcon = document.getElementById('menu-icon');
+    const navPanel = document.getElementById('nav-panel');
+
+    if (menuIcon && navPanel) {
+        menuIcon.addEventListener('click', () => {
+            navPanel.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navPanel.classList.remove('active');
+            });
+        });
     }
-  });
+
+    // --- 3. FILE UPLOAD LOGIC ---
+    const fileInput = document.getElementById('form-attachment');
+    const fileNameDisplay = document.getElementById('file-name-display');
+    const dropZonePrompt = document.getElementById('drop-zone-prompt');
+    const contactForm = document.getElementById('contact-form-element');
+    const submitBtn = document.getElementById('submit-btn');
+    const statusFeedback = document.getElementById('form-status-feedback');
+    
+    let base64FileString = "";
+    let uploadedFileName = "";
+
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            if (file.size > 200 * 1024) { 
+                alert("Attachments must be under 200KB.");
+                fileInput.value = "";
+                return;
+            }
+            uploadedFileName = file.name;
+            fileNameDisplay.textContent = `Selected: ${file.name}`;
+            fileNameDisplay.style.display = 'block';
+            dropZonePrompt.textContent = "Change file:";
+            const reader = new FileReader();
+            reader.onload = (event) => { base64FileString = event.target.result; };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // --- 4. EMAILJS SUBMISSION ---
+    contactForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending...";
+        
+        const templateParams = {
+            first_name: document.getElementById('first-name').value,
+            last_name: document.getElementById('last-name').value,
+            user_email: document.getElementById('email').value,
+            message: document.getElementById('message').value,
+            attachment_data: base64FileString,
+            attachment_name: uploadedFileName
+        };
+
+        emailjs.send('service_ogsj1vd', 'template_iwxhj21', templateParams)
+            .then(() => {
+                statusFeedback.textContent = "Message transmitted successfully.";
+                contactForm.reset();
+                fileNameDisplay.style.display = 'none';
+                dropZonePrompt.textContent = "Drag & drop or click to upload file";
+            })
+            .catch((error) => {
+                statusFeedback.textContent = "Transmission failed.";
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Submit";
+            });
+    });
+});
+
+
+ 
     </script>
 </body>
 </html>

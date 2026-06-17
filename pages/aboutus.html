@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="icon" type="image/png" href="/images/icontekmax.png">
     <title>Document</title>
 </head>
 <body>
@@ -76,12 +75,22 @@ body{
 /* Responsive constraints for screens like phones or small viewports */
 @media (max-width: 600px) {
   .section-embedded-header {
-    top: 20px;
-    right: 20px;
+    top: 0px;
+    right: 0px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
   }
   .header-logo-container {
-    width: 120px;
-    padding: 8px 10px;
+    width: 300px;
+    height: auto;
+    padding:0;
+  }
+  .header-logo-img{
+    width: 100%;
+    height: auto;
   }
 }
 
