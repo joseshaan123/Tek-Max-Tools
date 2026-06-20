@@ -109,13 +109,16 @@
 }
 
 /* Responsive constraints for screens like phones or small viewports */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .section-embedded-header {
-    top: 20px;
-    right: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    top: 0px;
+    right: 0px;
   }
   .header-logo-container {
-    width: 120px;
+    width: 300px;
     padding: 8px 10px;
   }
 }
@@ -160,7 +163,7 @@
     }
 
     .hero-content h1 {
-      font-size: 3.2rem;
+      font-size:clamp(3rem,5vw,3.5rem);
       font-weight: 700;
       letter-spacing: -0.03em;
       margin-bottom: 15px;
@@ -443,6 +446,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 60px;
       align-items: center;
+      height: max-content;
     }
 
     .connect-tagline {
@@ -539,7 +543,7 @@
        ========================================================================== */
     @media (max-width: 1024px) {
       .services-deck-canvas { width: 85vw; height: 75vh; }
-      .hero-content h1 { font-size: 2.3rem; }
+     
       .connect-main-title { font-size: 2rem; }
     }
 
@@ -547,18 +551,188 @@
       .services-deck-canvas { width: 90vw; height: 80vh; }
       .card-container-3d { padding: 24px; }
       .grid-layout { grid-template-columns: 1fr; gap: 20px; }
-      .connect-container { grid-template-columns: 1fr; gap: 40px; }
+      .connect-container { grid-template-columns: 1fr; }
       .right-column { order: -1; height: 35%; }
       .left-column { height: 65%; }
       .circle-frame-wrapper { width: 150px; height: 150px; }
-      .static-circle-frame { width: 140px; height: 140px; }
-      .hero-content h1 { font-size: 1.6rem; }
+      .static-circle-frame { width: 200px; height: 200px; }
+      
       .main-heading { font-size: 1.25rem; margin-bottom: 8px; }
       .description-box { height: 120px; }
     }
+
+
+    * Active State Styling */
+.nav-link.active {
+    background-color: #236B8E !important;
+    color: #FFFFFF !important;
+    padding: 8px 24px; /* Maintain consistent pill shape */
+}
+
+/* Ensure mobile links look correct when active inside the column */
+@media (max-width: 720px) {
+    .pill-navbar.active .nav-link.active {
+        width: 100%;
+        text-align: center;
+        border-radius: 10px;
+    }
+}
+
+
+/* Mobile Responsiveness */
+@media (max-width: 720px) {
+    .menu-icon { display: block; }
+    .pill-navbar { 
+        display: none; 
+        bottom: 100px; 
+        flex-direction: column; 
+        border-radius: 20px;
+        width: 200px;
+        padding: 15px;
+    }
+    .pill-navbar.active {
+        display: flex;
+        animation: slideUp 0.3s ease-out;
+    }
+}
+
+
+
+/* --- Hamburger Icon --- */
+.menu-icon { 
+    display: none; 
+    position: fixed; 
+    bottom: 30px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    z-index: 10000; 
+    cursor: pointer; 
+    background: #236B8E; 
+    padding: 15px; 
+    border-radius: 50%; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
+}
+.menu-icon span { display: block; width: 25px; height: 3px; background: white; margin: 5px 0; }
+
+@media (max-width: 720px) {
+    .menu-icon { display: block; }
+    .pill-navbar { 
+        display: none; 
+        bottom: 100px; 
+        flex-direction: column; 
+        border-radius: 20px;
+        width: 200px;
+        padding: 15px;
+    }
+    .pill-navbar.active {
+        display: flex;
+        animation: slideUp 0.3s ease-out;
+    }
+}
+
+@media(max-width:800px){
+  .hero-variant {
+      background: #000000;
+      position: relative;
+      overflow: hidden;
+      padding: 20px 20px;
+      height:100vh;
+      
+    }
+
+    .connect-container {
+      max-width: 1100px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      align-items: center;
+      height: fit-content;
+    }
+
+
+     .macro-section {
+      width: 100%;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+     
+    }
+
+
+
+
+
+
+@media(max-width:500px){
+ 
+
+    .connect-container {
+      max-width: 1100px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      justify-items: center;
+      
+      height: fit-content;
+    }
+
+    .connect-tagline {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #2B7A9B;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin: 0 auto;
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 25px;
+
+    }
+
+
+    .connect-main-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .services-deck-canvas {
+      position: relative;
+    width: 90vw; 
+    height: fit-content; 
+    }
+}
+
+   
   </style>
 </head>
 <body>
+
+  
+<!-- Hamburger Icon -->
+<div class="menu-icon" id="menu-icon">
+    <span></span><span></span><span></span>
+</div>
+
+<!-- The Navigation Panel -->
+<nav class="pill-navbar" id="nav-panel">
+    <a href="/" class="nav-link">Home</a>
+    <a href="/pages/aboutus.html" class="nav-link">About Us</a>
+    <a href="/pages/services.html" class="nav-link">Our Services</a>
+    <a href="/pages/ireland.html" class="nav-link">Ireland</a>
+    <a href="/pages/india.html" class="nav-link">India</a>
+    <a href="/pages/contactus.html" id="nav-contact" class="nav-link">Contact Us</a>
+</nav>
 
   <div class="viewport-stack-wrapper" id="master-viewport-deck">
      <header class="section-embedded-header">
@@ -633,14 +807,7 @@
 
   </div>
 
- <nav class="pill-navbar">
-    <a id="nav-home" href="/index.html" class="nav-link ">Home</a>
-    <a id="nav-about" href="/pages/aboutus.html" class="nav-link">About Us</a>
-    <a id="nav-india" href="/pages/services.html" class="nav-link">Our Services</a>
-    <a id="nav-ireland" href="/pages/ireland.html" class="nav-link">Ireland</a>
-    <a id="nav-china" href="/pages/india.html" class="nav-link">India</a>
-    <a id="nav-contact" href="/pages/contactus.html" class="nav-link">Contact Us</a>
-  </nav>
+
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -940,6 +1107,76 @@
       }
     }
   });
+
+
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // 1. Find out the name of the file the browser is looking at right now
+    const currentPath = window.location.pathname;
+
+    // 2. Grab all the navigation buttons
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    // 3. Remove any accidental highlight first
+    navLinks.forEach(link => link.classList.remove("active"));
+
+    // 4. Match the current page path with the button target path
+    let matched = false;
+    navLinks.forEach(link => {
+      const linkHref = link.getAttribute("href");
+      
+      // Check if the current URL path contains the file name of the button link
+      if (linkHref && currentPath.includes(linkHref) && linkHref !== "index.html" && !linkHref.startsWith("#")) {
+        link.classList.add("active");
+        matched = true;
+      }
+    });
+
+    // 5. Default Safeguard: If we are on the home page or index.html, highlight 'Home'
+    if (!matched) {
+      const homeLink = document.getElementById("nav-home");
+      if (homeLink) {
+        homeLink.classList.add("active");
+      }
+    }
+  });
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // --- 1. NAVIGATION HIGHLIGHT LOGIC ---
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    navLinks.forEach(link => {
+        link.classList.remove("active");
+        const linkHref = link.getAttribute("href");
+        
+        // Match logic: If current path ends with the href (or is home)
+        if (linkHref && (currentPath.endsWith(linkHref) || (currentPath === "/" && linkHref === "/index.html"))) {
+            link.classList.add("active");
+        }
+    });
+  });
+
+
+   // --- 2. MOBILE MENU TOGGLE LOGIC ---
+    const menuIcon = document.getElementById('menu-icon');
+    const navPanel = document.getElementById('nav-panel');
+
+    if (menuIcon && navPanel) {
+        menuIcon.addEventListener('click', () => {
+            navPanel.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navPanel.classList.remove('active');
+            });
+        });
+    }
+
 
   </script>
 </body>
