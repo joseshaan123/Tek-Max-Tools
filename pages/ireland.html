@@ -229,7 +229,7 @@
       height: 100%;
       background-color: #ffffff;
       border-radius: 16px;
-      padding: 48px;
+      padding: 20px;
       overflow: hidden;
       border: 1px solid #f1f5f9;
       box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 10px 25px rgba(0, 0, 0, 0.04);
@@ -287,7 +287,7 @@
     }
 
     .description-box {
-      height: 160px;
+      height: 200px;
       overflow-y: auto;
       padding-right: 8px;
     }
@@ -303,7 +303,7 @@
       display: flex;
       align-items: center;
       gap: 16px;
-      padding-top: 24px;
+      padding-top: 0px;
     }
 
     .btn {
@@ -559,6 +559,28 @@
       
       .main-heading { font-size: 1.25rem; margin-bottom: 8px; }
       .description-box { height: 120px; }
+
+        .navigation-row {
+      position: absolute;
+      top: 50px;
+      left: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 0px;
+    }
+    }
+
+    @media(max-width:600px){
+       .navigation-row {
+      position: absolute;
+      top: 150px;
+      left: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-top: 0px;
+    }
     }
 
 
@@ -595,6 +617,7 @@
         animation: slideUp 0.3s ease-out;
     }
 }
+
 
 
 
@@ -709,9 +732,230 @@
     .services-deck-canvas {
       position: relative;
     width: 90vw; 
-    height: fit-content; 
+    height:80vh; 
+    }
+
+
+    .card-container-3d {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      border-radius: 16px;
+      padding: 20px;
+      overflow: hidden;
+      border: 1px solid #f1f5f9;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12), 0 10px 25px rgba(0, 0, 0, 0.04);
+      
+      /* Card deck layout animations state definitions */
+      transform: translateY(100vh);
+      opacity: 0;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+    }
+
+  
+
+}
+
+@media(max-width:400px){
+  .navigation-row {
+      display: flex;
+      position: absolute;
+      top: 180px;
+      left: 20px;
+      align-items: center;
+      gap: 16px;
+      padding-top: 0px;
     }
 }
+
+#slide2p{
+  height: 160px;
+}
+
+
+/* ==========================================================================
+   PRODUCTION RE-ENGINEERED CORPORATE FIVE-COLUMN FOOTER SYSTEM
+   ========================================================================== */
+.main-corporate-footer {
+  background-color: #1c638d;
+  /* Changed padding: removed the bottom 20px padding so the text can truly touch the edge */
+  padding: 20px; 
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #ffffff;
+  
+  /* FORCE FOOTER TO BE A VERTICAL FLEXBOX */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 350px; /* Gives the footer enough body depth to push down against */
+}
+
+/* Master alignment container utilizing modern CSS Grid */
+.footer-grid-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  display: grid;
+  /* Balanced layout distribution split across five functional spaces */
+  grid-template-columns: 2.5fr 1.5fr 1.5fr 3.5fr 2fr;
+  gap: 40px;
+  align-items: flex-start;
+
+}
+
+.footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Base Headings Layout Formatting */
+.footer-column-heading {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* Logo container matching white background layout bounding box */
+.logo-white-block {
+ 
+ 
+  display: flex;
+ width: 300px;
+  height: 200px;
+  align-items: center;
+  justify-self: center;
+
+}
+
+.brand-logo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  justify-self: center;
+}
+
+/* Lists and Links Reset Mechanics */
+.footer-links-list, 
+.footer-services-static-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Interactive Navigation Link Items styling */
+.footer-links-list a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.15rem;
+  font-weight: 400;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.footer-links-list a:hover {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+/* Service Registry Column Styling */
+.footer-services-static-list li {
+  font-size: 1.05rem;
+  line-height: 1.45;
+  font-weight: 300;
+  opacity: 0.9;
+  position: relative;
+}
+
+/* Horizontal Social Media Layout Block */
+.social-icon-row {
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  gap: 18px;
+  margin-top: 5px;
+}
+
+.social-link-item {
+  color: #ffffff;
+  display: inline-block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  opacity: 0.9;
+}
+
+.social-link-item svg {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
+.social-link-item:hover {
+  transform: translateY(-3px);
+  opacity: 1;
+}
+.finalp{
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centered cleanly inside its baseline box */
+  font-size: 1.3rem;
+  text-align: center;
+  margin-bottom: 0;
+  height: 60px; /* Slightly tightened height for a cleaner corporate layout */
+  
+  /* THE MAGIC KEY: Pushes the element cleanly to the absolute bottom of the footer container */
+  margin-top: auto; 
+  
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.15); /* Optional: dynamic micro-shading band across the absolute bottom edge */
+}
+/* Responsive Adaptive Viewport Adjustments */
+@media (max-width: 1024px) {
+  .footer-grid-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 20px;
+    
+  }
+  .brand-column {
+    grid-column: span 2;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-corporate-footer {
+    padding: 40px 40px;
+  }
+  .footer-grid-container {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+  .brand-column {
+    grid-column: span 1;
+  }
+
+  .logo-white-block {
+ 
+ 
+  display: flex;
+ width: 300px;
+  height: 200px;
+  align-items: center;
+  justify-items: center;
+
+}
+}
+
 
    
   </style>
@@ -770,6 +1014,8 @@
 
           <div class="card-container-3d" data-card="2">
             <div id="nested-multi-material-wrapper" style="height: 100%; width: 100%;"></div>
+
+             
           </div>
 
           <div class="card-container-3d" data-card="3">
@@ -793,12 +1039,12 @@
           </div>
         </div>
         <div class="connect-portal-side">
-          <div class="portal-click-wrapper" id="portal-trigger">
+          <div class="portal-click-wrapper" id="portal-trigger" href="/pages/contactus.html">
             <div class="portal-wave wave-1"></div>
             <div class="portal-wave wave-2"></div>
             <div class="portal-wave wave-3"></div>
             <div class="portal-core-button">
-              <span>Contact Us</span>
+              <span>Contact Us</span> 
             </div>
           </div>
         </div>
@@ -806,6 +1052,86 @@
     </section>
 
   </div>
+
+
+  
+  <footer class="main-corporate-footer">
+  <div class="footer-grid-container">
+    
+    <div class="footer-column brand-column">
+      <div class="logo-white-block">
+        <img src="/images/tekmaxlogo.png" alt="TEK MAX Tools Logo" class="brand-logo-img">
+      </div>
+    </div>
+
+    <div class="footer-column links-column">
+      <h3 class="footer-column-heading">Navigation</h3>
+      <ul class="footer-links-list">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Ireland</a></li>
+        <li><a href="#">India</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column links-column">
+      <h3 class="footer-column-heading">Our Hubs</h3>
+      <ul class="footer-links-list">
+        <li><a href="#">Ireland</a></li>
+        <li><a href="#">Kerala, India</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-column services-column">
+      <h3 class="footer-column-heading">Our Services</h3>
+      <ul class="footer-services-static-list">
+        <li>Precision Tooling & Industrial Mould Design</li>
+        <li>Automotive OEM Project Management</li>
+        <li>Engineering Support & Agricultural Solutions</li>
+        <li>Advanced Agricultural Engineering Solutions</li>
+      </ul>
+    </div>
+
+    <div class="footer-column social-column">
+      <h3 class="footer-column-heading">Follow us on</h3>
+      
+      <div class="social-icon-row">
+        
+        <a href="#" class="social-link-item" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+
+        <a href="#" class="social-link-item" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+        </a>
+
+        <a href="#" class="social-link-item" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 509 511.514"><path fill="#fff" d="M434.762 74.334C387.553 26.81 323.245 0 256.236 0h-.768C115.795.001 2.121 113.696 2.121 253.456l.001.015a253.516 253.516 0 0033.942 126.671L0 511.514l134.373-35.269a253.416 253.416 0 00121.052 30.9h.003.053C395.472 507.145 509 393.616 509 253.626c0-67.225-26.742-131.727-74.252-179.237l.014-.055zM255.555 464.453c-37.753 0-74.861-10.22-107.293-29.479l-7.72-4.602-79.741 20.889 21.207-77.726-4.984-7.975c-21.147-33.606-32.415-72.584-32.415-112.308 0-116.371 94.372-210.743 210.741-210.743 56.011 0 109.758 22.307 149.277 61.98a210.93 210.93 0 0161.744 149.095c0 116.44-94.403 210.869-210.844 210.869h.028zm115.583-157.914c-6.363-3.202-37.474-18.472-43.243-20.593-5.769-2.121-10.01-3.202-14.315 3.203-4.305 6.404-16.373 20.593-20.063 24.855-3.69 4.263-7.401 4.815-13.679 1.612-6.278-3.202-26.786-9.883-50.899-31.472a192.748 192.748 0 01-35.411-43.867c-3.712-6.363-.404-9.777 2.82-12.873 3.224-3.096 6.363-7.381 9.48-11.092a41.58 41.58 0 006.357-10.597 11.678 11.678 0 00-.508-11.09c-1.718-3.18-14.444-34.357-19.534-47.06-5.09-12.703-10.37-10.603-14.272-10.901-3.902-.297-7.911-.19-12.089-.19a23.322 23.322 0 00-16.964 7.911c-5.707 6.298-22.1 21.673-22.1 52.849s22.671 61.249 25.852 65.532c3.182 4.284 44.663 68.227 108.288 95.649 15.099 6.489 26.891 10.392 36.053 13.403a87.504 87.504 0 0025.216 3.718c4.905 0 9.82-.416 14.65-1.237 12.174-1.782 37.453-15.291 42.776-30.073s5.303-27.57 3.711-30.093c-1.591-2.524-5.704-4.369-12.088-7.615l-.038.021z"/></svg>
+     
+  </a>
+        <a href="#" class="social-link-item" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="finalp">
+    <p>@ 2026 TekMax Tools.All Rights Reserved</p>
+  </div>
+</footer>
 
 
 
@@ -901,7 +1227,7 @@
                 <span class="tagline">Extreme-Wear Custom Component Moulding (Multi-Material Production)</span>
                 <h3 id="c2-title" class="main-heading">${currentSlide.title}</h3>
               </div>
-              <div class="description-box">
+              <div class="description-box" id="slide2p">
                 <p id="c2-desc">${currentSlide.desc}</p>
               </div>
               <div class="navigation-row">
@@ -913,7 +1239,7 @@
             <div class="right-column">
               <div class="circle-frame-wrapper">
                 <svg viewBox="0 0 100 100">
-                  <circle cx="50" cy="50" r="46" stroke="#f1f5f9" stroke-width="2.5" fill="transparent" />
+                  <circle cx="100" cy="100" r="46" stroke="#f1f5f9" stroke-width="2.5" fill="transparent" />
                   <circle id="loading-circle-border" cx="50" cy="50" r="46" stroke="#2B7A9B" stroke-width="3" fill="transparent" 
                           stroke-dasharray="${strokeTotal}" stroke-dashoffset="${currentOffset}" />
                 </svg>
@@ -944,7 +1270,7 @@
       }
 
       document.getElementById("portal-trigger").onclick = () => {
-        window.location.href = "mailto:info@tekmaxtools.com";
+        window.location.href = "/pages/contactus.html";
       };
 
       function regressSubSlide() {
@@ -1176,6 +1502,69 @@
             });
         });
     }
+
+    const servicesSection = document.querySelector('.services-macro-container');
+const cards = document.querySelectorAll('.card-container-3d');
+
+let currentCard = 0;
+let isInServices = false;
+let isAnimating = false;
+
+function updateCards() {
+  cards.forEach((card, index) => {
+    card.classList.remove('active-deck-card', 'past-deck-card');
+
+    if (index === currentCard) {
+      card.classList.add('active-deck-card');
+    } else if (index < currentCard) {
+      card.classList.add('past-deck-card');
+    }
+  });
+}
+
+// Detect when section is in view
+window.addEventListener('scroll', () => {
+  const rect = servicesSection.getBoundingClientRect();
+  isInServices = rect.top <= 0 && rect.bottom >= window.innerHeight;
+});
+
+// Scroll control
+window.addEventListener('wheel', (e) => {
+  if (!isInServices) return;
+
+  if (isAnimating) {
+    e.preventDefault();
+    return;
+  }
+
+  if (e.deltaY > 0) {
+    // scrolling down
+    if (currentCard < cards.length - 1) {
+      e.preventDefault();
+      currentCard++;
+      triggerAnimation();
+    }
+  } else {
+    // scrolling up
+    if (currentCard > 0) {
+      e.preventDefault();
+      currentCard--;
+      triggerAnimation();
+    }
+  }
+}, { passive: false });
+
+function triggerAnimation() {
+  isAnimating = true;
+  updateCards();
+
+  setTimeout(() => {
+    isAnimating = false;
+  }, 800); // match your CSS transition
+}
+
+// init
+updateCards();
 
 
   </script>
