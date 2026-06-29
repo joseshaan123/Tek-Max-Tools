@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+ /* ==========================================================================
+   PIXEL-MATCHED INDUSTRIAL CATALOG HOUSING CSS
+   ========================================================================== */
+.catalog-intro-section {
+  background-color: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+.catalog-intro-section img{
+    width: 500px;
+    align-self: center;
+}
+
+/* Hero Heading Layout Base */
+.catalog-hero-header {
+  text-align: center;
+  padding: 60px 20px 40px 20px;
+}
+.catalog-sub {
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+  color: #1c638d;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.catalog-main-title {
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: #113f5b;
+  margin: 5px 0;
+  text-transform: uppercase;
+}
+.header-line-accent {
+  width: 80px;
+  height: 2px;
+  background-color: #1c638d;
+  margin: 12px auto 0 auto;
+}
+
+/* Full-Width 100% Blue Welcome Section Band */
+.catalog-welcome-band {
+  background-color: #236b8e;
+  color: #ffffff;
+  padding: 60px 20px;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+}
+.welcome-inner-content {
+  max-width: 950px;
+  margin: 0 auto;
+}
+.welcome-inner-content h2 {
+  font-size: 2.8rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin: 0 0 20px 0;
+}
+.welcome-inner-content p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin: 0 0 20px 0;
+}
+
+/* Welcome Grid Core Placeholders */
+.welcome-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  max-width: 800px;
+  margin: 40px auto 0 auto;
+}
+.flat-gray-slot {
+  background-color: #dbdbdb;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  font-size: 1.1rem;
+  text-transform: lowercase;
+}
+
+/* Master Sector Block Rows Matrix */
+.sector-roster-blocks {
+  width: 100%;
+}
+.sector-block-row {
+  display: grid;
+  width: 100%;
+  height: 100vh;
+  border-bottom: 4px solid #ffffff; /* Sharp crisp white boundary strip */
+  box-sizing: border-box;
+  transition: grid-template-columns 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Closed Width Configuration states (100% Core Banner, 0% Hidden Items) */
+.sector-block-row.reveal-left-engine {
+  grid-template-columns: 1fr 0fr;
+}
+.sector-block-row.reveal-right-engine {
+  grid-template-columns: 0fr 1fr;
+}
+
+/* Expanded Open Configuration Width ratios */
+.sector-block-row.reveal-left-engine.is-expanded {
+  grid-template-columns: 4fr 8fr;
+}
+.sector-block-row.reveal-right-engine.is-expanded {
+  grid-template-columns: 8fr 4fr;
+}
+
+/* Main Interactive Blue Info Canvas Blocks */
+.info-block-panel {
+  background-color: #236b8e;
+  color: #ffffff;
+  padding: 80px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.panel-inside-aligner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.info-block-panel h3 {
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 0 0 10px 0;
+  letter-spacing: 0.02em;
+}
+.info-block-panel p {
+  font-size: 1.1rem;
+  opacity: 0.85;
+  margin: 0 0 25px 0;
+}
+
+/* Circle Outline Trigger System */
+.circle-arrow-trigger {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  background-color: transparent;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.5s;
+}
+.circle-arrow-trigger:hover {
+  background-color: #ffffff;
+  color: #236b8e;
+}
+
+/* Smooth arrow flip mechanic upon activation class trigger */
+.is-expanded .circle-arrow-trigger {
+  transform: rotate(180deg);
+}
+
+/* Slide-out Hidden Grid Slots Module */
+.products-hidden-slider {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+/* Flat Product Structural Cell bounds with integrated borders */
+.flat-product-cell {
+  display: flex;
+  flex-direction: column;
+  border-left: 4px solid #ffffff; /* Sharp white block borders */
+  background-color: #dbdbdb;
+  box-sizing: border-box;
+  height: 100%;
+  min-width: 0;
+}
+.reveal-right-engine .flat-product-cell {
+  border-left: none;
+  border-right: 4px solid #ffffff;
+}
+
+/* Image Core Presentation Slot */
+.cell-image-area {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+  font-size: 1.1rem;
+  min-height: 300px;
+}
+
+/* Solid meta tracking strip lockup underneath the image slot */
+.cell-meta-bar {
+  background-color: #e6e6e6;
+  color: #000000;
+  padding: 15px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 400;
+  border-top: 4px solid #ffffff;
+  text-transform: lowercase;
+}
+
+/* ==========================================================================
+   BREAKPOINT MONITOR RESPONSIVE RETROFITS
+   ========================================================================== */
+@media (max-width: 992px) {
+  .welcome-preview-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+  .flat-gray-slot {
+    height: 160px;
+  }
+  
+  /* Fallback responsive flow stacking sequentially downwards cleanly for mobile displays */
+  .sector-block-row,
+  .sector-block-row.reveal-left-engine,
+  .sector-block-row.reveal-right-engine,
+  .sector-block-row.reveal-left-engine.is-expanded,
+  .sector-block-row.reveal-right-engine.is-expanded {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sector-block-row.reveal-right-engine {
+    flex-direction: column-reverse; /* Maintains matching text layout orders natively */
+  }
+
+  .products-hidden-slider {
+    grid-template-columns: 1fr;
+    max-height: 0;
+    transition: max-height 0.5s ease;
+  }
+  .is-expanded .products-hidden-slider {
+    max-height: 800px;
+  }
+  .flat-product-cell,
+  .reveal-right-engine .flat-product-cell {
+    border-left: none;
+    border-right: none;
+    border-top: 4px solid #ffffff;
+  }
+  .circle-arrow-trigger {
+    transform: rotate(90deg);
+  }
+  .is-expanded .circle-arrow-trigger {
+    transform: rotate(-90deg);
+  }
+}
+header{
+    height: fit-content;
+    width: 100%;
+}
+
+header img{
+ width: 50px;
+
+}
+    </style>
+<header>
+    <img src="/images/icontekmax.png" alt="">
+</header>
+  <section class="catalog-intro-section">
+    <img src="/images/ChatGPT Image Jun 22, 2026, 10_28_36 AM.png" alt="">
+  
+  <div class="catalog-hero-header">
+    <span class="catalog-sub">PORTAL ACCESS</span>
+    <h1 class="catalog-main-title">Product Catalog</h1>
+    <div class="header-line-accent"></div>
+  </div>
+
+  <div class="catalog-welcome-band">
+    <div class="welcome-inner-content">
+      <h2>WELCOME</h2>
+      <p>To the TEK MAX Tools Interactive Product Portal. Explore our precision-manufactured tooling frameworks, industrial injection systems, and advanced agricultural machinery setups.</p>
+      <p>Every component within our ecosystem is engineered to strict international specifications. Select a sector from the filters below to isolate active equipment registries, view deep-dive mechanical datasheets, or coordinate directly with our consulting engineers.</p>
+      
+      <div class="welcome-preview-grid">
+        <div class="flat-gray-slot">img slot</div>
+        <div class="flat-gray-slot">img slot</div>
+        <div class="flat-gray-slot">img slot</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sector-roster-blocks">
+    
+    <div class="sector-block-row reveal-left-engine" id="sector-agri">
+      <div class="info-block-panel">
+        <div class="panel-inside-aligner">
+          <h3>AGRICULTURAL SECTOR</h3>
+          <p>Click here to view our main products</p>
+          <button class="circle-arrow-trigger" onclick="toggleSectorSlide('sector-agri')">
+            <svg class="nav-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="products-hidden-slider">
+        <div class="flat-product-cell">
+          <div class="cell-image-area">img slot</div>
+          <div class="cell-meta-bar">product 1</div>
+        </div>
+        <div class="flat-product-cell">
+          <div class="cell-image-area">img slot</div>
+          <div class="cell-meta-bar">product 2</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sector-block-row reveal-right-engine" id="sector-tools">
+      <div class="products-hidden-slider">
+        <div class="flat-product-cell">
+          <div class="cell-image-area">img slot</div>
+          <div class="cell-meta-bar">product 1</div>
+        </div>
+        <div class="flat-product-cell">
+          <div class="cell-image-area">img slot</div>
+          <div class="cell-meta-bar">product 2</div>
+        </div>
+      </div>
+      <div class="info-block-panel">
+        <div class="panel-inside-aligner">
+          <h3>TOOLS SECTOR</h3>
+          <p>Click here to view our main products</p>
+          <button class="circle-arrow-trigger" onclick="toggleSectorSlide('sector-tools')">
+            <svg class="nav-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sector-block-row reveal-left-engine" id="sector-auto">
+      <div class="info-block-panel">
+        <div class="panel-inside-aligner">
+          <h3>AUTOMOBILE SECTOR</h3>
+          <p>Click here to view our main products</p>
+          <button class="circle-arrow-trigger" onclick="toggleSectorSlide('sector-auto')">
+            <svg class="nav-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="products-hidden-slider">
+        <div class="flat-product-cell">
+          <div class="cell-image-area">img slot</div>
+          <div class="cell-meta-bar">product 1</div>
+        </div>
+        <div class="flat-product-cell">
+          <div class="cell-image-area">img slot</div>
+          <div class="cell-meta-bar">product 2</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<script>
+    /**
+ * Toggles the exact grid widths to open or close product blocks flush against each other
+ * @param {string} sectionBlockId - The DOM elements section target ID
+ */
+function toggleSectorSlide(sectionBlockId) {
+  const selectedRow = document.getElementById(sectionBlockId);
+  if (selectedRow) {
+    selectedRow.classList.toggle('is-expanded');
+  }
+}
+</script>
+</body>
+</html>
